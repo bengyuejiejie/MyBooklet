@@ -25,5 +25,6 @@
 @property (strong, nonatomic) EditNoteViewController *editNoteViewDelegate;
 
 - (id)initAttachListWithNote:(Note *)orginaNote;
+- (void)setRecordPath:(NSString *)audioPath;
 
 @end

@@ -8,6 +8,7 @@
 
 #import "AttachListViewController.h"
 #import "EditNoteViewController.h"
+#import "RecordAudioViewController.h"
 
 @interface AttachListViewController ()
 
@@ -155,10 +156,11 @@
             break;
         case 2:
             // 声音
+            [self openRecordAudioView];
             break;
         case 3:
             // 视频
-            NSLog(@"视频");
+            NSLog(@"录制视频");
             break;
         case 4:
             // 网页
@@ -213,22 +215,29 @@
 {
     [picker dismissViewControllerAnimated:YES completion:nil];
     
-    NSString *type = [info objectForKey:UIImagePickerControllerMediaType];
-    NSString *name = nil;
-    //当选择的类型是图片
-    if ([type isEqualToString:@"public.image"]) {
-        name = @"相片";
-    } else {
-        name = @"视频";
-    }
-    name = [name stringByAppendingFormat:@" %i", self.dataSource.count];
-    
 //    UIImage *originalImage = [info objectForKey:UIImagePickerControllerOriginalImage];
     NSString *url = [[info objectForKey:UIImagePickerControllerReferenceURL] absoluteString];
 
-    [self addToAttachList:[NSString stringWithFormat:@"图片%d", curAttachIndex] url:url];
-    
-   
+    [self addToAttachList:[NSString stringWithFormat:@"图片: %d", curAttachIndex] url:url];   
+}
+
+/**
+ *	@brief	打开录制音频视图
+ */
+- (void)openRecordAudioView
+{
+    RecordAudioViewController *vc = [[RecordAudioViewController alloc] init];
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+/**
+ *	@brief  返回音频路径
+ *
+ *	@param 	audioPath 	
+ */
+- (void)setRecordPath:(NSString *)audioPath
+{
+    [self addToAttachList:[NSString stringWithFormat:@"音频: %d", curAttachIndex] url:audioPath];
 }
 
 /**
