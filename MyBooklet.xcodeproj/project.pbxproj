@@ -1,0 +1,526 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		C15BD6AD16F5B7780082FF6E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C15BD6AC16F5B7780082FF6E /* UIKit.framework */; };
+		C15BD6AF16F5B7780082FF6E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C15BD6AE16F5B7780082FF6E /* Foundation.framework */; };
+		C15BD6B116F5B7780082FF6E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C15BD6B016F5B7780082FF6E /* CoreGraphics.framework */; };
+		C15BD6B716F5B7780082FF6E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C15BD6B516F5B7780082FF6E /* InfoPlist.strings */; };
+		C15BD6B916F5B7780082FF6E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C15BD6B816F5B7780082FF6E /* main.m */; };
+		C15BD6BD16F5B7780082FF6E /* BookletAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C15BD6BC16F5B7780082FF6E /* BookletAppDelegate.m */; };
+		C15BD6BF16F5B7780082FF6E /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = C15BD6BE16F5B7780082FF6E /* Default.png */; };
+		C15BD6C116F5B7780082FF6E /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C15BD6C016F5B7780082FF6E /* Default@2x.png */; };
+		C15BD6C316F5B7780082FF6E /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C15BD6C216F5B7780082FF6E /* Default-568h@2x.png */; };
+		C15BD6D016F5B9000082FF6E /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C15BD6CF16F5B9000082FF6E /* CoreAudio.framework */; };
+		C15BD6D216F5B90A0082FF6E /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C15BD6D116F5B9090082FF6E /* AVFoundation.framework */; };
+		C15BD6D416F5B9110082FF6E /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C15BD6D316F5B9110082FF6E /* MessageUI.framework */; };
+		C15BD6D616F5B91E0082FF6E /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C15BD6D516F5B91E0082FF6E /* CoreData.framework */; };
+		C15BD6E116F5BE1F0082FF6E /* Note_attach.m in Sources */ = {isa = PBXBuildFile; fileRef = C15BD6DC16F5BE1F0082FF6E /* Note_attach.m */; };
+		C15BD6E216F5BE1F0082FF6E /* Note_tag.m in Sources */ = {isa = PBXBuildFile; fileRef = C15BD6DE16F5BE1F0082FF6E /* Note_tag.m */; };
+		C15BD6E316F5BE1F0082FF6E /* Note.m in Sources */ = {isa = PBXBuildFile; fileRef = C15BD6E016F5BE1F0082FF6E /* Note.m */; };
+		C15BD6EC16F5BE580082FF6E /* MoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C15BD6E516F5BE580082FF6E /* MoreViewController.m */; };
+		C15BD6ED16F5BE580082FF6E /* AboutGnoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C15BD6E716F5BE580082FF6E /* AboutGnoteViewController.m */; };
+		C15BD6EE16F5BE580082FF6E /* DataSyncViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C15BD6E916F5BE580082FF6E /* DataSyncViewController.m */; };
+		C15BD6EF16F5BE580082FF6E /* HelpOnlineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C15BD6EB16F5BE580082FF6E /* HelpOnlineViewController.m */; };
+		C15BD70616F5CA620082FF6E /* NoteListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C15BD6FC16F5CA620082FF6E /* NoteListViewController.xib */; };
+		C15BD70716F5CA620082FF6E /* NotePreviewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C15BD6FD16F5CA620082FF6E /* NotePreviewViewController.xib */; };
+		C15BD70816F5CA620082FF6E /* EditNoteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C15BD6FE16F5CA620082FF6E /* EditNoteViewController.xib */; };
+		C15BD70916F5CA620082FF6E /* TagListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C15BD6FF16F5CA620082FF6E /* TagListViewController.xib */; };
+		C15BD70A16F5CA620082FF6E /* AboutGnoteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C15BD70016F5CA620082FF6E /* AboutGnoteViewController.xib */; };
+		C15BD70B16F5CA620082FF6E /* AttachListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C15BD70116F5CA620082FF6E /* AttachListViewController.xib */; };
+		C15BD70C16F5CA620082FF6E /* DataSyncViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C15BD70216F5CA620082FF6E /* DataSyncViewController.xib */; };
+		C15BD70D16F5CA620082FF6E /* HelpOnlineViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C15BD70316F5CA620082FF6E /* HelpOnlineViewController.xib */; };
+		C15BD70E16F5CA620082FF6E /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C15BD70416F5CA620082FF6E /* MainViewController.xib */; };
+		C15BD70F16F5CA620082FF6E /* MoreViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C15BD70516F5CA620082FF6E /* MoreViewController.xib */; };
+		C15BD71216F5CAA60082FF6E /* divideLine.png in Resources */ = {isa = PBXBuildFile; fileRef = C15BD71016F5CAA60082FF6E /* divideLine.png */; };
+		C15BD71316F5CAA60082FF6E /* input.png in Resources */ = {isa = PBXBuildFile; fileRef = C15BD71116F5CAA60082FF6E /* input.png */; };
+		C15BD71616F5CACD0082FF6E /* AttachListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C15BD71516F5CACD0082FF6E /* AttachListViewController.m */; };
+		C15BD71916F5CADC0082FF6E /* EditNoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C15BD71816F5CADC0082FF6E /* EditNoteViewController.m */; };
+		C15BD72016F5CAEA0082FF6E /* NoteListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C15BD71B16F5CAEA0082FF6E /* NoteListViewController.m */; };
+		C15BD72116F5CAEA0082FF6E /* TagListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C15BD71E16F5CAEA0082FF6E /* TagListViewController.m */; };
+		C15BD72216F5CAEA0082FF6E /* NotePreviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C15BD71F16F5CAEA0082FF6E /* NotePreviewViewController.m */; };
+		C15BD72516F5CC2D0082FF6E /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C15BD72416F5CC2D0082FF6E /* MainViewController.m */; };
+		C15BD72816F5CED60082FF6E /* GNote.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C15BD72616F5CED60082FF6E /* GNote.xcdatamodeld */; };
+		C15BD72B16F5EBE70082FF6E /* NoteDataModelUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = C15BD72A16F5EBE70082FF6E /* NoteDataModelUtil.m */; };
+		C1A52F0816F7255300CF6D29 /* RecordAudioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1A52F0616F7255200CF6D29 /* RecordAudioViewController.m */; };
+		C1A52F0916F7255300CF6D29 /* RecordAudioViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1A52F0716F7255200CF6D29 /* RecordAudioViewController.xib */; };
+		C1A52F0B16F72B3600CF6D29 /* norecording.wav in Resources */ = {isa = PBXBuildFile; fileRef = C1A52F0A16F72B3600CF6D29 /* norecording.wav */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		C15BD6A816F5B7780082FF6E /* MyBooklet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyBooklet.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C15BD6AC16F5B7780082FF6E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		C15BD6AE16F5B7780082FF6E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		C15BD6B016F5B7780082FF6E /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		C15BD6B416F5B7780082FF6E /* MyBooklet-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MyBooklet-Info.plist"; sourceTree = "<group>"; };
+		C15BD6B616F5B7780082FF6E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		C15BD6B816F5B7780082FF6E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		C15BD6BA16F5B7780082FF6E /* MyBooklet-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MyBooklet-Prefix.pch"; sourceTree = "<group>"; };
+		C15BD6BB16F5B7780082FF6E /* BookletAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BookletAppDelegate.h; sourceTree = "<group>"; };
+		C15BD6BC16F5B7780082FF6E /* BookletAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BookletAppDelegate.m; sourceTree = "<group>"; };
+		C15BD6BE16F5B7780082FF6E /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		C15BD6C016F5B7780082FF6E /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		C15BD6C216F5B7780082FF6E /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		C15BD6CF16F5B9000082FF6E /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
+		C15BD6D116F5B9090082FF6E /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		C15BD6D316F5B9110082FF6E /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		C15BD6D516F5B91E0082FF6E /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		C15BD6DB16F5BE1F0082FF6E /* Note_attach.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Note_attach.h; sourceTree = "<group>"; };
+		C15BD6DC16F5BE1F0082FF6E /* Note_attach.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Note_attach.m; sourceTree = "<group>"; };
+		C15BD6DD16F5BE1F0082FF6E /* Note_tag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Note_tag.h; sourceTree = "<group>"; };
+		C15BD6DE16F5BE1F0082FF6E /* Note_tag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Note_tag.m; sourceTree = "<group>"; };
+		C15BD6DF16F5BE1F0082FF6E /* Note.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Note.h; sourceTree = "<group>"; };
+		C15BD6E016F5BE1F0082FF6E /* Note.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Note.m; sourceTree = "<group>"; };
+		C15BD6E416F5BE580082FF6E /* MoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoreViewController.h; sourceTree = "<group>"; };
+		C15BD6E516F5BE580082FF6E /* MoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoreViewController.m; sourceTree = "<group>"; };
+		C15BD6E616F5BE580082FF6E /* AboutGnoteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutGnoteViewController.h; sourceTree = "<group>"; };
+		C15BD6E716F5BE580082FF6E /* AboutGnoteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutGnoteViewController.m; sourceTree = "<group>"; };
+		C15BD6E816F5BE580082FF6E /* DataSyncViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataSyncViewController.h; sourceTree = "<group>"; };
+		C15BD6E916F5BE580082FF6E /* DataSyncViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataSyncViewController.m; sourceTree = "<group>"; };
+		C15BD6EA16F5BE580082FF6E /* HelpOnlineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelpOnlineViewController.h; sourceTree = "<group>"; };
+		C15BD6EB16F5BE580082FF6E /* HelpOnlineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HelpOnlineViewController.m; sourceTree = "<group>"; };
+		C15BD6FC16F5CA620082FF6E /* NoteListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NoteListViewController.xib; sourceTree = "<group>"; };
+		C15BD6FD16F5CA620082FF6E /* NotePreviewViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NotePreviewViewController.xib; sourceTree = "<group>"; };
+		C15BD6FE16F5CA620082FF6E /* EditNoteViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditNoteViewController.xib; sourceTree = "<group>"; };
+		C15BD6FF16F5CA620082FF6E /* TagListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TagListViewController.xib; sourceTree = "<group>"; };
+		C15BD70016F5CA620082FF6E /* AboutGnoteViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AboutGnoteViewController.xib; sourceTree = "<group>"; };
+		C15BD70116F5CA620082FF6E /* AttachListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AttachListViewController.xib; sourceTree = "<group>"; };
+		C15BD70216F5CA620082FF6E /* DataSyncViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DataSyncViewController.xib; sourceTree = "<group>"; };
+		C15BD70316F5CA620082FF6E /* HelpOnlineViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HelpOnlineViewController.xib; sourceTree = "<group>"; };
+		C15BD70416F5CA620082FF6E /* MainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
+		C15BD70516F5CA620082FF6E /* MoreViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MoreViewController.xib; sourceTree = "<group>"; };
+		C15BD71016F5CAA60082FF6E /* divideLine.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = divideLine.png; sourceTree = "<group>"; };
+		C15BD71116F5CAA60082FF6E /* input.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = input.png; sourceTree = "<group>"; };
+		C15BD71416F5CACD0082FF6E /* AttachListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttachListViewController.h; sourceTree = "<group>"; };
+		C15BD71516F5CACD0082FF6E /* AttachListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AttachListViewController.m; sourceTree = "<group>"; };
+		C15BD71716F5CADC0082FF6E /* EditNoteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditNoteViewController.h; sourceTree = "<group>"; };
+		C15BD71816F5CADC0082FF6E /* EditNoteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditNoteViewController.m; sourceTree = "<group>"; };
+		C15BD71A16F5CAEA0082FF6E /* NoteListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoteListViewController.h; sourceTree = "<group>"; };
+		C15BD71B16F5CAEA0082FF6E /* NoteListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoteListViewController.m; sourceTree = "<group>"; };
+		C15BD71C16F5CAEA0082FF6E /* NotePreviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotePreviewViewController.h; sourceTree = "<group>"; };
+		C15BD71D16F5CAEA0082FF6E /* TagListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagListViewController.h; sourceTree = "<group>"; };
+		C15BD71E16F5CAEA0082FF6E /* TagListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TagListViewController.m; sourceTree = "<group>"; };
+		C15BD71F16F5CAEA0082FF6E /* NotePreviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotePreviewViewController.m; sourceTree = "<group>"; };
+		C15BD72316F5CC2D0082FF6E /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		C15BD72416F5CC2D0082FF6E /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		C15BD72716F5CED60082FF6E /* GNote.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = GNote.xcdatamodel; sourceTree = "<group>"; };
+		C15BD72916F5EBE70082FF6E /* NoteDataModelUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoteDataModelUtil.h; sourceTree = "<group>"; };
+		C15BD72A16F5EBE70082FF6E /* NoteDataModelUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoteDataModelUtil.m; sourceTree = "<group>"; };
+		C1A52F0516F7255200CF6D29 /* RecordAudioViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecordAudioViewController.h; sourceTree = "<group>"; };
+		C1A52F0616F7255200CF6D29 /* RecordAudioViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecordAudioViewController.m; sourceTree = "<group>"; };
+		C1A52F0716F7255200CF6D29 /* RecordAudioViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RecordAudioViewController.xib; sourceTree = "<group>"; };
+		C1A52F0A16F72B3600CF6D29 /* norecording.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = norecording.wav; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C15BD6A516F5B7780082FF6E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C15BD6D616F5B91E0082FF6E /* CoreData.framework in Frameworks */,
+				C15BD6D416F5B9110082FF6E /* MessageUI.framework in Frameworks */,
+				C15BD6D216F5B90A0082FF6E /* AVFoundation.framework in Frameworks */,
+				C15BD6D016F5B9000082FF6E /* CoreAudio.framework in Frameworks */,
+				C15BD6AD16F5B7780082FF6E /* UIKit.framework in Frameworks */,
+				C15BD6AF16F5B7780082FF6E /* Foundation.framework in Frameworks */,
+				C15BD6B116F5B7780082FF6E /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		C15BD69D16F5B7780082FF6E = {
+			isa = PBXGroup;
+			children = (
+				C15BD6B216F5B7780082FF6E /* MyBooklet */,
+				C15BD6AB16F5B7780082FF6E /* Frameworks */,
+				C15BD6A916F5B7780082FF6E /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		C15BD6A916F5B7780082FF6E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C15BD6A816F5B7780082FF6E /* MyBooklet.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C15BD6AB16F5B7780082FF6E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C15BD6D516F5B91E0082FF6E /* CoreData.framework */,
+				C15BD6D316F5B9110082FF6E /* MessageUI.framework */,
+				C15BD6D116F5B9090082FF6E /* AVFoundation.framework */,
+				C15BD6CF16F5B9000082FF6E /* CoreAudio.framework */,
+				C15BD6AC16F5B7780082FF6E /* UIKit.framework */,
+				C15BD6AE16F5B7780082FF6E /* Foundation.framework */,
+				C15BD6B016F5B7780082FF6E /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C15BD6B216F5B7780082FF6E /* MyBooklet */ = {
+			isa = PBXGroup;
+			children = (
+				C15BD6BB16F5B7780082FF6E /* BookletAppDelegate.h */,
+				C15BD6BC16F5B7780082FF6E /* BookletAppDelegate.m */,
+				C15BD6D716F5BDCC0082FF6E /* class */,
+				C15BD6F016F5BEF20082FF6E /* resource */,
+				C15BD6B316F5B7780082FF6E /* Supporting Files */,
+			);
+			path = MyBooklet;
+			sourceTree = "<group>";
+		};
+		C15BD6B316F5B7780082FF6E /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				C15BD6B416F5B7780082FF6E /* MyBooklet-Info.plist */,
+				C15BD6B516F5B7780082FF6E /* InfoPlist.strings */,
+				C15BD6B816F5B7780082FF6E /* main.m */,
+				C15BD6BA16F5B7780082FF6E /* MyBooklet-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		C15BD6D716F5BDCC0082FF6E /* class */ = {
+			isa = PBXGroup;
+			children = (
+				C15BD72C16F62E120082FF6E /* util */,
+				C15BD6D816F5BDD50082FF6E /* db */,
+				C15BD6D916F5BDDC0082FF6E /* main */,
+				C15BD6DA16F5BDF30082FF6E /* more */,
+			);
+			name = class;
+			sourceTree = "<group>";
+		};
+		C15BD6D816F5BDD50082FF6E /* db */ = {
+			isa = PBXGroup;
+			children = (
+				C15BD72616F5CED60082FF6E /* GNote.xcdatamodeld */,
+				C15BD6DB16F5BE1F0082FF6E /* Note_attach.h */,
+				C15BD6DC16F5BE1F0082FF6E /* Note_attach.m */,
+				C15BD6DD16F5BE1F0082FF6E /* Note_tag.h */,
+				C15BD6DE16F5BE1F0082FF6E /* Note_tag.m */,
+				C15BD6DF16F5BE1F0082FF6E /* Note.h */,
+				C15BD6E016F5BE1F0082FF6E /* Note.m */,
+			);
+			name = db;
+			sourceTree = "<group>";
+		};
+		C15BD6D916F5BDDC0082FF6E /* main */ = {
+			isa = PBXGroup;
+			children = (
+				C15BD72316F5CC2D0082FF6E /* MainViewController.h */,
+				C15BD72416F5CC2D0082FF6E /* MainViewController.m */,
+				C15BD71A16F5CAEA0082FF6E /* NoteListViewController.h */,
+				C15BD71B16F5CAEA0082FF6E /* NoteListViewController.m */,
+				C15BD71D16F5CAEA0082FF6E /* TagListViewController.h */,
+				C15BD71E16F5CAEA0082FF6E /* TagListViewController.m */,
+				C15BD71C16F5CAEA0082FF6E /* NotePreviewViewController.h */,
+				C15BD71F16F5CAEA0082FF6E /* NotePreviewViewController.m */,
+				C15BD71716F5CADC0082FF6E /* EditNoteViewController.h */,
+				C15BD71816F5CADC0082FF6E /* EditNoteViewController.m */,
+				C15BD71416F5CACD0082FF6E /* AttachListViewController.h */,
+				C15BD71516F5CACD0082FF6E /* AttachListViewController.m */,
+				C1A52F0516F7255200CF6D29 /* RecordAudioViewController.h */,
+				C1A52F0616F7255200CF6D29 /* RecordAudioViewController.m */,
+			);
+			name = main;
+			sourceTree = "<group>";
+		};
+		C15BD6DA16F5BDF30082FF6E /* more */ = {
+			isa = PBXGroup;
+			children = (
+				C15BD6E416F5BE580082FF6E /* MoreViewController.h */,
+				C15BD6E516F5BE580082FF6E /* MoreViewController.m */,
+				C15BD6E616F5BE580082FF6E /* AboutGnoteViewController.h */,
+				C15BD6E716F5BE580082FF6E /* AboutGnoteViewController.m */,
+				C15BD6E816F5BE580082FF6E /* DataSyncViewController.h */,
+				C15BD6E916F5BE580082FF6E /* DataSyncViewController.m */,
+				C15BD6EA16F5BE580082FF6E /* HelpOnlineViewController.h */,
+				C15BD6EB16F5BE580082FF6E /* HelpOnlineViewController.m */,
+			);
+			name = more;
+			sourceTree = "<group>";
+		};
+		C15BD6F016F5BEF20082FF6E /* resource */ = {
+			isa = PBXGroup;
+			children = (
+				C1A52F0A16F72B3600CF6D29 /* norecording.wav */,
+				C15BD6F216F5BF9E0082FF6E /* xib */,
+				C15BD6F116F5BF070082FF6E /* image */,
+			);
+			name = resource;
+			sourceTree = "<group>";
+		};
+		C15BD6F116F5BF070082FF6E /* image */ = {
+			isa = PBXGroup;
+			children = (
+				C15BD6BE16F5B7780082FF6E /* Default.png */,
+				C15BD6C016F5B7780082FF6E /* Default@2x.png */,
+				C15BD6C216F5B7780082FF6E /* Default-568h@2x.png */,
+				C15BD71016F5CAA60082FF6E /* divideLine.png */,
+				C15BD71116F5CAA60082FF6E /* input.png */,
+			);
+			name = image;
+			sourceTree = "<group>";
+		};
+		C15BD6F216F5BF9E0082FF6E /* xib */ = {
+			isa = PBXGroup;
+			children = (
+				C1A52F0716F7255200CF6D29 /* RecordAudioViewController.xib */,
+				C15BD6FC16F5CA620082FF6E /* NoteListViewController.xib */,
+				C15BD6FD16F5CA620082FF6E /* NotePreviewViewController.xib */,
+				C15BD6FE16F5CA620082FF6E /* EditNoteViewController.xib */,
+				C15BD6FF16F5CA620082FF6E /* TagListViewController.xib */,
+				C15BD70016F5CA620082FF6E /* AboutGnoteViewController.xib */,
+				C15BD70116F5CA620082FF6E /* AttachListViewController.xib */,
+				C15BD70216F5CA620082FF6E /* DataSyncViewController.xib */,
+				C15BD70316F5CA620082FF6E /* HelpOnlineViewController.xib */,
+				C15BD70416F5CA620082FF6E /* MainViewController.xib */,
+				C15BD70516F5CA620082FF6E /* MoreViewController.xib */,
+			);
+			name = xib;
+			sourceTree = "<group>";
+		};
+		C15BD72C16F62E120082FF6E /* util */ = {
+			isa = PBXGroup;
+			children = (
+				C15BD72916F5EBE70082FF6E /* NoteDataModelUtil.h */,
+				C15BD72A16F5EBE70082FF6E /* NoteDataModelUtil.m */,
+			);
+			name = util;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C15BD6A716F5B7780082FF6E /* MyBooklet */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C15BD6CC16F5B7780082FF6E /* Build configuration list for PBXNativeTarget "MyBooklet" */;
+			buildPhases = (
+				C15BD6A416F5B7780082FF6E /* Sources */,
+				C15BD6A516F5B7780082FF6E /* Frameworks */,
+				C15BD6A616F5B7780082FF6E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MyBooklet;
+			productName = MyBooklet;
+			productReference = C15BD6A816F5B7780082FF6E /* MyBooklet.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C15BD69F16F5B7780082FF6E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = XYZ;
+				LastUpgradeCheck = 0450;
+				ORGANIZATIONNAME = wangxiaohong;
+			};
+			buildConfigurationList = C15BD6A216F5B7780082FF6E /* Build configuration list for PBXProject "MyBooklet" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = C15BD69D16F5B7780082FF6E;
+			productRefGroup = C15BD6A916F5B7780082FF6E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C15BD6A716F5B7780082FF6E /* MyBooklet */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C15BD6A616F5B7780082FF6E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C15BD6B716F5B7780082FF6E /* InfoPlist.strings in Resources */,
+				C15BD6BF16F5B7780082FF6E /* Default.png in Resources */,
+				C15BD6C116F5B7780082FF6E /* Default@2x.png in Resources */,
+				C15BD6C316F5B7780082FF6E /* Default-568h@2x.png in Resources */,
+				C15BD70616F5CA620082FF6E /* NoteListViewController.xib in Resources */,
+				C15BD70716F5CA620082FF6E /* NotePreviewViewController.xib in Resources */,
+				C15BD70816F5CA620082FF6E /* EditNoteViewController.xib in Resources */,
+				C15BD70916F5CA620082FF6E /* TagListViewController.xib in Resources */,
+				C15BD70A16F5CA620082FF6E /* AboutGnoteViewController.xib in Resources */,
+				C15BD70B16F5CA620082FF6E /* AttachListViewController.xib in Resources */,
+				C15BD70C16F5CA620082FF6E /* DataSyncViewController.xib in Resources */,
+				C15BD70D16F5CA620082FF6E /* HelpOnlineViewController.xib in Resources */,
+				C15BD70E16F5CA620082FF6E /* MainViewController.xib in Resources */,
+				C15BD70F16F5CA620082FF6E /* MoreViewController.xib in Resources */,
+				C15BD71216F5CAA60082FF6E /* divideLine.png in Resources */,
+				C15BD71316F5CAA60082FF6E /* input.png in Resources */,
+				C1A52F0916F7255300CF6D29 /* RecordAudioViewController.xib in Resources */,
+				C1A52F0B16F72B3600CF6D29 /* norecording.wav in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C15BD6A416F5B7780082FF6E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C15BD6B916F5B7780082FF6E /* main.m in Sources */,
+				C15BD6BD16F5B7780082FF6E /* BookletAppDelegate.m in Sources */,
+				C15BD6E116F5BE1F0082FF6E /* Note_attach.m in Sources */,
+				C15BD6E216F5BE1F0082FF6E /* Note_tag.m in Sources */,
+				C15BD6E316F5BE1F0082FF6E /* Note.m in Sources */,
+				C15BD6EC16F5BE580082FF6E /* MoreViewController.m in Sources */,
+				C15BD6ED16F5BE580082FF6E /* AboutGnoteViewController.m in Sources */,
+				C15BD6EE16F5BE580082FF6E /* DataSyncViewController.m in Sources */,
+				C15BD6EF16F5BE580082FF6E /* HelpOnlineViewController.m in Sources */,
+				C15BD71616F5CACD0082FF6E /* AttachListViewController.m in Sources */,
+				C15BD71916F5CADC0082FF6E /* EditNoteViewController.m in Sources */,
+				C15BD72016F5CAEA0082FF6E /* NoteListViewController.m in Sources */,
+				C15BD72116F5CAEA0082FF6E /* TagListViewController.m in Sources */,
+				C15BD72216F5CAEA0082FF6E /* NotePreviewViewController.m in Sources */,
+				C15BD72516F5CC2D0082FF6E /* MainViewController.m in Sources */,
+				C15BD72816F5CED60082FF6E /* GNote.xcdatamodeld in Sources */,
+				C15BD72B16F5EBE70082FF6E /* NoteDataModelUtil.m in Sources */,
+				C1A52F0816F7255300CF6D29 /* RecordAudioViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		C15BD6B516F5B7780082FF6E /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C15BD6B616F5B7780082FF6E /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		C15BD6CA16F5B7780082FF6E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		C15BD6CB16F5B7780082FF6E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C15BD6CD16F5B7780082FF6E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MyBooklet/MyBooklet-Prefix.pch";
+				INFOPLIST_FILE = "MyBooklet/MyBooklet-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		C15BD6CE16F5B7780082FF6E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MyBooklet/MyBooklet-Prefix.pch";
+				INFOPLIST_FILE = "MyBooklet/MyBooklet-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C15BD6A216F5B7780082FF6E /* Build configuration list for PBXProject "MyBooklet" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C15BD6CA16F5B7780082FF6E /* Debug */,
+				C15BD6CB16F5B7780082FF6E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C15BD6CC16F5B7780082FF6E /* Build configuration list for PBXNativeTarget "MyBooklet" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C15BD6CD16F5B7780082FF6E /* Debug */,
+				C15BD6CE16F5B7780082FF6E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		C15BD72616F5CED60082FF6E /* GNote.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				C15BD72716F5CED60082FF6E /* GNote.xcdatamodel */,
+			);
+			currentVersion = C15BD72716F5CED60082FF6E /* GNote.xcdatamodel */;
+			path = GNote.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = C15BD69F16F5B7780082FF6E /* Project object */;
+}
