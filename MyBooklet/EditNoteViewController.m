@@ -155,7 +155,8 @@
  */
 - (void)insertAttach:(id)sender
 {
-    AttachListViewController *vc = [[AttachListViewController alloc] initAttachListWithNote:self.note];
+    AttachListViewController *vc = [[AttachListViewController alloc] init];
+    [vc setNoteDataSource:self.note];
     UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:vc];
     [self presentViewController:nc animated:YES completion:nil];
 }

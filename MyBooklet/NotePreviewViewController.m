@@ -185,14 +185,16 @@
 
 - (void)attach:(id)sender
 {
-    self.rightAttachListView = [[AttachListViewController alloc] initAttachListWithNote:self.note];
+    self.rightAttachListView = [[AttachListViewController alloc] init];
+    [self.rightAttachListView setNoteDataSource:self.note];
+    
     self.rightAttachListView.view.frame = CGRectMake(320, 20, 260, 480);
-    self.rightAttachListView.view.hidden = YES;
     
     [self.delegate.window addSubview:self.rightAttachListView.view];
     self.rightAttachListView.toolBar.hidden = YES;
-    self.rightAttachListView.view.backgroundColor = [UIColor grayColor];
-    self.rightAttachListView.view.hidden = NO;
+    self.rightAttachListView.cellCanSelect = YES;
+    
+    UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:self.rightAttachListView];
     [self moveToLeftSide];
 }
 

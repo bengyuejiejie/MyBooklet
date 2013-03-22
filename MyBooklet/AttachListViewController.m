@@ -9,6 +9,7 @@
 #import "AttachListViewController.h"
 #import "EditNoteViewController.h"
 #import "RecordAudioViewController.h"
+#import "AttachPreviewViewController.h"
 
 @interface AttachListViewController ()
 
@@ -20,6 +21,7 @@
 @synthesize note;
 @synthesize editNoteViewDelegate;
 @synthesize toolBar;
+@synthesize cellCanSelect;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -34,7 +36,6 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    
     self.title = @"附件列表";
     
     // Create Cancel Button
@@ -60,6 +61,8 @@
     [self.view addSubview:toolBar];
     
     self.editNoteViewDelegate = [[EditNoteViewController alloc] initWithNibName:@"EditNoteViewController" bundle:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setRecordPath:) name:@"ADD_RECORD_TO_ATTACHLIST" object:nil];
 }
 
 - (void)didReceiveMemoryWarning
@@ -94,7 +97,13 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"打开文件");
+    if (cellCanSelect) {
+        AttachPreviewViewController *vc = [[AttachPreviewViewController alloc] init];
+        
+        Note_attach *noteAttach = [self.dataSource objectAtIndex:indexPath.row];
+        [vc setDataSource:noteAttach];
+        [self.navigationController pushViewController:vc animated:YES];
+    }
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
@@ -227,7 +236,7 @@
 - (void)openRecordAudioView
 {
     RecordAudioViewController *vc = [[RecordAudioViewController alloc] init];
-    [self.navigationController pushViewController:vc animated:YES];
+    [self presentViewController:vc animated:YES completion:nil];
 }
 
 /**
@@ -235,9 +244,11 @@
  *
  *	@param 	audioPath 	
  */
-- (void)setRecordPath:(NSString *)audioPath
+- (void)setRecordPath:(NSNotification *)notification
 {
-    [self addToAttachList:[NSString stringWithFormat:@"音频: %d", curAttachIndex] url:audioPath];
+    NSDictionary *dic = notification.userInfo;
+    NSString *audioPath = [dic objectForKey:@"audioPath"];
+    [self addToAttachList:[NSString stringWithFormat:@"音频: %d", curAttachIndex ] url:audioPath];
 }
 
 /**
@@ -265,19 +276,14 @@
 }
 
 /**
- *	@brief	初始化显示的attachList
+ *	@brief	设置dataSource
  *
  *	@param 	note 
  */
-- (id)initAttachListWithNote:(Note *)orginaNote
+- (void)setNoteDataSource:(Note *)orginaNote
 {
-    self = [super initWithNibName:@"AttachListViewController" bundle:nil];
-    if (self)
-    {
-        self.dataSource = [[NSMutableArray alloc] initWithArray:orginaNote.attachList.allObjects];
-    }
-    
-    return self;
+    self.dataSource = [[NSMutableArray alloc] initWithArray:orginaNote.attachList.allObjects];
 }
+
 
 @end

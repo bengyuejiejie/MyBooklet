@@ -50,6 +50,8 @@
 		C1A52F0816F7255300CF6D29 /* RecordAudioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1A52F0616F7255200CF6D29 /* RecordAudioViewController.m */; };
 		C1A52F0916F7255300CF6D29 /* RecordAudioViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1A52F0716F7255200CF6D29 /* RecordAudioViewController.xib */; };
 		C1A52F0B16F72B3600CF6D29 /* norecording.wav in Resources */ = {isa = PBXBuildFile; fileRef = C1A52F0A16F72B3600CF6D29 /* norecording.wav */; };
+		C1C8DC2A16FC671E005F8019 /* AttachPreviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1C8DC2816FC671E005F8019 /* AttachPreviewViewController.m */; };
+		C1C8DC2B16FC671E005F8019 /* AttachPreviewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1C8DC2916FC671E005F8019 /* AttachPreviewViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -115,6 +117,9 @@
 		C1A52F0616F7255200CF6D29 /* RecordAudioViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecordAudioViewController.m; sourceTree = "<group>"; };
 		C1A52F0716F7255200CF6D29 /* RecordAudioViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RecordAudioViewController.xib; sourceTree = "<group>"; };
 		C1A52F0A16F72B3600CF6D29 /* norecording.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = norecording.wav; sourceTree = "<group>"; };
+		C1C8DC2716FC671D005F8019 /* AttachPreviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttachPreviewViewController.h; sourceTree = "<group>"; };
+		C1C8DC2816FC671E005F8019 /* AttachPreviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AttachPreviewViewController.m; sourceTree = "<group>"; };
+		C1C8DC2916FC671E005F8019 /* AttachPreviewViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AttachPreviewViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -231,6 +236,8 @@
 				C15BD71516F5CACD0082FF6E /* AttachListViewController.m */,
 				C1A52F0516F7255200CF6D29 /* RecordAudioViewController.h */,
 				C1A52F0616F7255200CF6D29 /* RecordAudioViewController.m */,
+				C1C8DC2716FC671D005F8019 /* AttachPreviewViewController.h */,
+				C1C8DC2816FC671E005F8019 /* AttachPreviewViewController.m */,
 			);
 			name = main;
 			sourceTree = "<group>";
@@ -275,6 +282,7 @@
 		C15BD6F216F5BF9E0082FF6E /* xib */ = {
 			isa = PBXGroup;
 			children = (
+				C1C8DC2916FC671E005F8019 /* AttachPreviewViewController.xib */,
 				C1A52F0716F7255200CF6D29 /* RecordAudioViewController.xib */,
 				C15BD6FC16F5CA620082FF6E /* NoteListViewController.xib */,
 				C15BD6FD16F5CA620082FF6E /* NotePreviewViewController.xib */,
@@ -369,6 +377,7 @@
 				C15BD71316F5CAA60082FF6E /* input.png in Resources */,
 				C1A52F0916F7255300CF6D29 /* RecordAudioViewController.xib in Resources */,
 				C1A52F0B16F72B3600CF6D29 /* norecording.wav in Resources */,
+				C1C8DC2B16FC671E005F8019 /* AttachPreviewViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -397,6 +406,7 @@
 				C15BD72816F5CED60082FF6E /* GNote.xcdatamodeld in Sources */,
 				C15BD72B16F5EBE70082FF6E /* NoteDataModelUtil.m in Sources */,
 				C1A52F0816F7255300CF6D29 /* RecordAudioViewController.m in Sources */,
+				C1C8DC2A16FC671E005F8019 /* AttachPreviewViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

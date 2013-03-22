@@ -111,10 +111,19 @@
  */
 - (IBAction)ok:(id)sender
 {
-    [self.delegate setRecordPath:self.audioPath];
     [self dismissViewControllerAnimated:YES completion:nil];
+    
+    NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
+    [dic setObject:@"3244" forKey:@"audioPath"];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"ADD_RECORD_TO_ATTACHLIST" object:self userInfo:dic];
 }
 
+- (void)aaaaaa:(NSString *)str
+{
+    [self.delegate setRecordPath:self.audioPath];
+
+}
 
 /**
  *	@brief	取消
@@ -123,7 +132,7 @@
  */
 - (IBAction)cancel:(id)sender
 {
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 @end

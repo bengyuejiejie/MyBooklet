@@ -21,10 +21,10 @@
 
 @property (strong, nonatomic) NSMutableArray *dataSource;
 @property (strong, nonatomic) Note *note;
+@property (nonatomic) BOOL cellCanSelect;
 
 @property (strong, nonatomic) EditNoteViewController *editNoteViewDelegate;
 
-- (id)initAttachListWithNote:(Note *)orginaNote;
+- (void)setNoteDataSource:(Note *)orginaNote;
 - (void)setRecordPath:(NSString *)audioPath;
-
 @end
