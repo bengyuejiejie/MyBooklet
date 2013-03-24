@@ -194,7 +194,6 @@
     self.rightAttachListView.toolBar.hidden = YES;
     self.rightAttachListView.cellCanSelect = YES;
     
-    UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:self.rightAttachListView];
     [self moveToLeftSide];
 }
 

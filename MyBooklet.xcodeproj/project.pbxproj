@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C10768B816FEAA2100BF8EA0 /* Note_tag.m in Sources */ = {isa = PBXBuildFile; fileRef = C10768B716FEAA2100BF8EA0 /* Note_tag.m */; };
+		C10768BB16FEAA2100BF8EA0 /* Note.m in Sources */ = {isa = PBXBuildFile; fileRef = C10768BA16FEAA2100BF8EA0 /* Note.m */; };
+		C10768BE16FEAA2100BF8EA0 /* Note_attach.m in Sources */ = {isa = PBXBuildFile; fileRef = C10768BD16FEAA2100BF8EA0 /* Note_attach.m */; };
+		C10768C216FEAC1600BF8EA0 /* ALAssetsLibrary+CustomPhotoAlbum.m in Sources */ = {isa = PBXBuildFile; fileRef = C10768C116FEAC1600BF8EA0 /* ALAssetsLibrary+CustomPhotoAlbum.m */; };
 		C15BD6AD16F5B7780082FF6E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C15BD6AC16F5B7780082FF6E /* UIKit.framework */; };
 		C15BD6AF16F5B7780082FF6E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C15BD6AE16F5B7780082FF6E /* Foundation.framework */; };
 		C15BD6B116F5B7780082FF6E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C15BD6B016F5B7780082FF6E /* CoreGraphics.framework */; };
@@ -20,9 +24,6 @@
 		C15BD6D216F5B90A0082FF6E /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C15BD6D116F5B9090082FF6E /* AVFoundation.framework */; };
 		C15BD6D416F5B9110082FF6E /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C15BD6D316F5B9110082FF6E /* MessageUI.framework */; };
 		C15BD6D616F5B91E0082FF6E /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C15BD6D516F5B91E0082FF6E /* CoreData.framework */; };
-		C15BD6E116F5BE1F0082FF6E /* Note_attach.m in Sources */ = {isa = PBXBuildFile; fileRef = C15BD6DC16F5BE1F0082FF6E /* Note_attach.m */; };
-		C15BD6E216F5BE1F0082FF6E /* Note_tag.m in Sources */ = {isa = PBXBuildFile; fileRef = C15BD6DE16F5BE1F0082FF6E /* Note_tag.m */; };
-		C15BD6E316F5BE1F0082FF6E /* Note.m in Sources */ = {isa = PBXBuildFile; fileRef = C15BD6E016F5BE1F0082FF6E /* Note.m */; };
 		C15BD6EC16F5BE580082FF6E /* MoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C15BD6E516F5BE580082FF6E /* MoreViewController.m */; };
 		C15BD6ED16F5BE580082FF6E /* AboutGnoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C15BD6E716F5BE580082FF6E /* AboutGnoteViewController.m */; };
 		C15BD6EE16F5BE580082FF6E /* DataSyncViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C15BD6E916F5BE580082FF6E /* DataSyncViewController.m */; };
@@ -55,6 +56,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C10768B616FEAA2100BF8EA0 /* Note_tag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Note_tag.h; sourceTree = "<group>"; };
+		C10768B716FEAA2100BF8EA0 /* Note_tag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Note_tag.m; sourceTree = "<group>"; };
+		C10768B916FEAA2100BF8EA0 /* Note.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Note.h; sourceTree = "<group>"; };
+		C10768BA16FEAA2100BF8EA0 /* Note.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Note.m; sourceTree = "<group>"; };
+		C10768BC16FEAA2100BF8EA0 /* Note_attach.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Note_attach.h; sourceTree = "<group>"; };
+		C10768BD16FEAA2100BF8EA0 /* Note_attach.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Note_attach.m; sourceTree = "<group>"; };
+		C10768C016FEAC1600BF8EA0 /* ALAssetsLibrary+CustomPhotoAlbum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ALAssetsLibrary+CustomPhotoAlbum.h"; sourceTree = "<group>"; };
+		C10768C116FEAC1600BF8EA0 /* ALAssetsLibrary+CustomPhotoAlbum.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ALAssetsLibrary+CustomPhotoAlbum.m"; sourceTree = "<group>"; };
 		C15BD6A816F5B7780082FF6E /* MyBooklet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyBooklet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C15BD6AC16F5B7780082FF6E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		C15BD6AE16F5B7780082FF6E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -72,12 +81,6 @@
 		C15BD6D116F5B9090082FF6E /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		C15BD6D316F5B9110082FF6E /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		C15BD6D516F5B91E0082FF6E /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
-		C15BD6DB16F5BE1F0082FF6E /* Note_attach.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Note_attach.h; sourceTree = "<group>"; };
-		C15BD6DC16F5BE1F0082FF6E /* Note_attach.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Note_attach.m; sourceTree = "<group>"; };
-		C15BD6DD16F5BE1F0082FF6E /* Note_tag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Note_tag.h; sourceTree = "<group>"; };
-		C15BD6DE16F5BE1F0082FF6E /* Note_tag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Note_tag.m; sourceTree = "<group>"; };
-		C15BD6DF16F5BE1F0082FF6E /* Note.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Note.h; sourceTree = "<group>"; };
-		C15BD6E016F5BE1F0082FF6E /* Note.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Note.m; sourceTree = "<group>"; };
 		C15BD6E416F5BE580082FF6E /* MoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoreViewController.h; sourceTree = "<group>"; };
 		C15BD6E516F5BE580082FF6E /* MoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoreViewController.m; sourceTree = "<group>"; };
 		C15BD6E616F5BE580082FF6E /* AboutGnoteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutGnoteViewController.h; sourceTree = "<group>"; };
@@ -140,6 +143,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C10768BF16FEAC0800BF8EA0 /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				C10768C316FEAC1E00BF8EA0 /* ALAssetsLibrary */,
+			);
+			name = lib;
+			sourceTree = "<group>";
+		};
+		C10768C316FEAC1E00BF8EA0 /* ALAssetsLibrary */ = {
+			isa = PBXGroup;
+			children = (
+				C10768C016FEAC1600BF8EA0 /* ALAssetsLibrary+CustomPhotoAlbum.h */,
+				C10768C116FEAC1600BF8EA0 /* ALAssetsLibrary+CustomPhotoAlbum.m */,
+			);
+			name = ALAssetsLibrary;
+			sourceTree = "<group>";
+		};
 		C15BD69D16F5B7780082FF6E = {
 			isa = PBXGroup;
 			children = (
@@ -209,12 +229,12 @@
 			isa = PBXGroup;
 			children = (
 				C15BD72616F5CED60082FF6E /* GNote.xcdatamodeld */,
-				C15BD6DB16F5BE1F0082FF6E /* Note_attach.h */,
-				C15BD6DC16F5BE1F0082FF6E /* Note_attach.m */,
-				C15BD6DD16F5BE1F0082FF6E /* Note_tag.h */,
-				C15BD6DE16F5BE1F0082FF6E /* Note_tag.m */,
-				C15BD6DF16F5BE1F0082FF6E /* Note.h */,
-				C15BD6E016F5BE1F0082FF6E /* Note.m */,
+				C10768B616FEAA2100BF8EA0 /* Note_tag.h */,
+				C10768B716FEAA2100BF8EA0 /* Note_tag.m */,
+				C10768B916FEAA2100BF8EA0 /* Note.h */,
+				C10768BA16FEAA2100BF8EA0 /* Note.m */,
+				C10768BC16FEAA2100BF8EA0 /* Note_attach.h */,
+				C10768BD16FEAA2100BF8EA0 /* Note_attach.m */,
 			);
 			name = db;
 			sourceTree = "<group>";
@@ -260,6 +280,7 @@
 		C15BD6F016F5BEF20082FF6E /* resource */ = {
 			isa = PBXGroup;
 			children = (
+				C10768BF16FEAC0800BF8EA0 /* lib */,
 				C1A52F0A16F72B3600CF6D29 /* norecording.wav */,
 				C15BD6F216F5BF9E0082FF6E /* xib */,
 				C15BD6F116F5BF070082FF6E /* image */,
@@ -390,9 +411,6 @@
 			files = (
 				C15BD6B916F5B7780082FF6E /* main.m in Sources */,
 				C15BD6BD16F5B7780082FF6E /* BookletAppDelegate.m in Sources */,
-				C15BD6E116F5BE1F0082FF6E /* Note_attach.m in Sources */,
-				C15BD6E216F5BE1F0082FF6E /* Note_tag.m in Sources */,
-				C15BD6E316F5BE1F0082FF6E /* Note.m in Sources */,
 				C15BD6EC16F5BE580082FF6E /* MoreViewController.m in Sources */,
 				C15BD6ED16F5BE580082FF6E /* AboutGnoteViewController.m in Sources */,
 				C15BD6EE16F5BE580082FF6E /* DataSyncViewController.m in Sources */,
@@ -407,6 +425,10 @@
 				C15BD72B16F5EBE70082FF6E /* NoteDataModelUtil.m in Sources */,
 				C1A52F0816F7255300CF6D29 /* RecordAudioViewController.m in Sources */,
 				C1C8DC2A16FC671E005F8019 /* AttachPreviewViewController.m in Sources */,
+				C10768B816FEAA2100BF8EA0 /* Note_tag.m in Sources */,
+				C10768BB16FEAA2100BF8EA0 /* Note.m in Sources */,
+				C10768BE16FEAA2100BF8EA0 /* Note_attach.m in Sources */,
+				C10768C216FEAC1600BF8EA0 /* ALAssetsLibrary+CustomPhotoAlbum.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -433,7 +455,8 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Xiaojuan Li (7H5ZACAQ59)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Xiaojuan Li (7H5ZACAQ59)";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -448,7 +471,10 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "6208263A-FB81-49B5-89FE-73FCFFDD967A";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "6208263A-FB81-49B5-89FE-73FCFFDD967A";
 				SDKROOT = iphoneos;
+				VALID_ARCHS = "armv7 armv7s";
 			};
 			name = Debug;
 		};
@@ -461,7 +487,8 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Xiaojuan Li (7H5ZACAQ59)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Xiaojuan Li (7H5ZACAQ59)";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -469,8 +496,11 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PROVISIONING_PROFILE = "6208263A-FB81-49B5-89FE-73FCFFDD967A";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "6208263A-FB81-49B5-89FE-73FCFFDD967A";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
+				VALID_ARCHS = "armv7 armv7s";
 			};
 			name = Release;
 		};

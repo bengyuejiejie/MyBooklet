@@ -102,7 +102,7 @@
         
         Note_attach *noteAttach = [self.dataSource objectAtIndex:indexPath.row];
         [vc setDataSource:noteAttach];
-        [self.navigationController pushViewController:vc animated:YES];
+        [self presentViewController:vc animated:YES completion:nil];
     }
 }
 

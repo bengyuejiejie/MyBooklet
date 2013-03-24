@@ -2,7 +2,7 @@
 //  Note.h
 //  MyBooklet
 //
-//  Created by wangxiaohong on 1/14/13.
+//  Created by wangxiaohong on 3/24/13.
 //  Copyright (c) 2013 wangxiaohong. All rights reserved.
 //
 

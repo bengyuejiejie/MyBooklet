@@ -16,6 +16,7 @@
         <attribute name="createTime" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="noteId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="url" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="inNote" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Note" inverseName="attachList" inverseEntity="Note" syncable="YES"/>
     </entity>
@@ -30,7 +31,7 @@
     </entity>
     <elements>
         <element name="Note" positionX="160" positionY="192" width="128" height="178"/>
-        <element name="Note_tag" positionX="322" positionY="375" width="128" height="148"/>
-        <element name="Note_attach" positionX="430" positionY="192" width="128" height="133"/>
+        <element name="Note_attach" positionX="430" positionY="192" width="128" height="150"/>
+        <element name="Note_tag" positionX="322" positionY="375" width="128" height="150"/>
     </elements>
 </model>
