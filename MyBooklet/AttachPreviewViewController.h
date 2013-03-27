@@ -16,4 +16,6 @@
 @property (strong, nonatomic) ALAssetsLibrary *assetsLibrary;
 
 - (void)setDataSource:(Note_attach *)attach;
+- (IBAction)back:(id)sender;
+
 @end

@@ -53,6 +53,7 @@
 		C1A52F0B16F72B3600CF6D29 /* norecording.wav in Resources */ = {isa = PBXBuildFile; fileRef = C1A52F0A16F72B3600CF6D29 /* norecording.wav */; };
 		C1C8DC2A16FC671E005F8019 /* AttachPreviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1C8DC2816FC671E005F8019 /* AttachPreviewViewController.m */; };
 		C1C8DC2B16FC671E005F8019 /* AttachPreviewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1C8DC2916FC671E005F8019 /* AttachPreviewViewController.xib */; };
+		C1DBBE9E170332A2000BC152 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1DBBE9D170332A2000BC152 /* AssetsLibrary.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -123,6 +124,7 @@
 		C1C8DC2716FC671D005F8019 /* AttachPreviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttachPreviewViewController.h; sourceTree = "<group>"; };
 		C1C8DC2816FC671E005F8019 /* AttachPreviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AttachPreviewViewController.m; sourceTree = "<group>"; };
 		C1C8DC2916FC671E005F8019 /* AttachPreviewViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AttachPreviewViewController.xib; sourceTree = "<group>"; };
+		C1DBBE9D170332A2000BC152 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,6 +132,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C1DBBE9E170332A2000BC152 /* AssetsLibrary.framework in Frameworks */,
 				C15BD6D616F5B91E0082FF6E /* CoreData.framework in Frameworks */,
 				C15BD6D416F5B9110082FF6E /* MessageUI.framework in Frameworks */,
 				C15BD6D216F5B90A0082FF6E /* AVFoundation.framework in Frameworks */,
@@ -163,6 +166,7 @@
 		C15BD69D16F5B7780082FF6E = {
 			isa = PBXGroup;
 			children = (
+				C1DBBE9D170332A2000BC152 /* AssetsLibrary.framework */,
 				C15BD6B216F5B7780082FF6E /* MyBooklet */,
 				C15BD6AB16F5B7780082FF6E /* Frameworks */,
 				C15BD6A916F5B7780082FF6E /* Products */,

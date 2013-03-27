@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "Note.h"
 #import "Note_attach.h"
+//#import "NotePreviewViewController.h"
+@class NotePreviewViewController;
 @class EditNoteViewController;
 
 @interface AttachListViewController : UIViewController <UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITableViewDataSource, UITableViewDelegate>
@@ -24,6 +26,7 @@
 @property (nonatomic) BOOL cellCanSelect;
 
 @property (strong, nonatomic) EditNoteViewController *editNoteViewDelegate;
+@property (strong, nonatomic) NotePreviewViewController *notePreviewDelegate;
 
 - (void)setNoteDataSource:(Note *)orginaNote;
 - (void)setRecordPath:(NSString *)audioPath;

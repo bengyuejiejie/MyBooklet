@@ -10,6 +10,7 @@
 #import "EditNoteViewController.h"
 #import "RecordAudioViewController.h"
 #import "AttachPreviewViewController.h"
+#import "NotePreviewViewController.h"
 
 @interface AttachListViewController ()
 
@@ -20,6 +21,7 @@
 @synthesize dataSource;
 @synthesize note;
 @synthesize editNoteViewDelegate;
+@synthesize notePreviewDelegate;
 @synthesize toolBar;
 @synthesize cellCanSelect;
 
@@ -102,7 +104,7 @@
         
         Note_attach *noteAttach = [self.dataSource objectAtIndex:indexPath.row];
         [vc setDataSource:noteAttach];
-        [self presentViewController:vc animated:YES completion:nil];
+        [self.notePreviewDelegate.navigationController pushViewController:vc animated:YES];
     }
 }
 
@@ -156,7 +158,7 @@
 {
 	switch (buttonIndex) {
         case 0:
-            // 添加相册照片，视频
+            // 添加相册照片
             [self addMedia:0];
             break;
         case 1:
@@ -190,7 +192,7 @@
             NSLog(@"取消");
             break;
         case 1:
-            [self addToAttachList:[NSString stringWithFormat:@"网页%d：%@", curAttachIndex,[actionSheet textFieldAtIndex:0].text] url:nil];
+            [self addToAttachList:[NSString stringWithFormat:@"网页%d：%@", curAttachIndex,[actionSheet textFieldAtIndex:0].text] url:[actionSheet textFieldAtIndex:0].text type:3];
             break;
         default:
             break;
@@ -223,11 +225,10 @@
         didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
     [picker dismissViewControllerAnimated:YES completion:nil];
-    
-//    UIImage *originalImage = [info objectForKey:UIImagePickerControllerOriginalImage];
     NSString *url = [[info objectForKey:UIImagePickerControllerReferenceURL] absoluteString];
 
-    [self addToAttachList:[NSString stringWithFormat:@"图片: %d", curAttachIndex] url:url];   
+    // 图片 type：0
+    [self addToAttachList:[NSString stringWithFormat:@"图片: %d", curAttachIndex] url:url type:0];
 }
 
 /**
@@ -248,7 +249,7 @@
 {
     NSDictionary *dic = notification.userInfo;
     NSString *audioPath = [dic objectForKey:@"audioPath"];
-    [self addToAttachList:[NSString stringWithFormat:@"音频: %d", curAttachIndex ] url:audioPath];
+    [self addToAttachList:[NSString stringWithFormat:@"音频: %d", curAttachIndex ] url:audioPath type:1];
 }
 
 /**
@@ -257,7 +258,7 @@
  *	@param 	name
  *	@param 	url 	
  */
-- (void)addToAttachList:(NSString *)name url:(NSString *)url
+- (void)addToAttachList:(NSString *)name url:(NSString *)url type:(int)type
 {
     BookletAppDelegate *applicationDelegate = (BookletAppDelegate *)[[UIApplication sharedApplication] delegate];
     
@@ -266,6 +267,7 @@
     [noteAttach setName:name ];
     [noteAttach setNoteId:self.note.noteId];
     [noteAttach setCreateTime:[NSDate date]];
+    [noteAttach setType:[NSNumber numberWithInt:type]];
     
     [noteAttach setUrl:url];
     [noteAttach setInNote:self.note];

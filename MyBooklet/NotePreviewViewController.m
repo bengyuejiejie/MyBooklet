@@ -60,8 +60,8 @@
     self.title = @"文章详情";
     
     self.contentTextView.editable = NO;
-
-//    [self.view addSubview:self.keywordView];
+    
+    self.rightAttachListView = [[AttachListViewController alloc] init];
 }
 
 - (void)back:(id)sender {
@@ -102,7 +102,6 @@
 
     [self.keywordView addSubview:btn];
     [self.view addSubview:self.keywordView];
-
 }
 
 /**
@@ -151,6 +150,11 @@
     [self.view addSubview:toolBar];
 }
 
+/**
+ *	@brief	编辑文章
+ *
+ *	@param 	sender 	
+ */
 - (void)edit:(id)sender
 {
     // Initialize Note Preview Controller
@@ -164,6 +168,11 @@
     [self.navigationController presentViewController:nc animated:YES completion:nil];
 }
 
+/**
+ *	@brief	删除文章
+ *
+ *	@param 	sender 	
+ */
 - (void)delete:(id)sender
 {
 	UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@""
@@ -183,44 +192,41 @@
     }
 }
 
+/**
+ *	@brief	点击附件
+ *
+ *	@param 	sender 	
+ */
 - (void)attach:(id)sender
 {
-    self.rightAttachListView = [[AttachListViewController alloc] init];
-    [self.rightAttachListView setNoteDataSource:self.note];
-    
-    self.rightAttachListView.view.frame = CGRectMake(320, 20, 260, 480);
-    
-    [self.delegate.window addSubview:self.rightAttachListView.view];
+    self.rightAttachListView.view.frame = CGRectMake(320, 0, 260, 480);
     self.rightAttachListView.toolBar.hidden = YES;
     self.rightAttachListView.cellCanSelect = YES;
-    
+    self.rightAttachListView.notePreviewDelegate = self;
+    [self.rightAttachListView setNoteDataSource:self.note];
+
+    [self.view addSubview:self.rightAttachListView.view];
+
     [self moveToLeftSide];
 }
 
 // move view to left side
 - (void)moveToLeftSide {
     
-    CGRect leftRect = CGRectMake(-220.0f, self.navigationController.view.frame.origin.y, self.navigationController.view.frame.size.width, self.navigationController.view.frame.size.height);
+    CGRect leftRect = CGRectMake(-220.0f, 0, 540, self.navigationController.view.frame.size.height - 44- 20);
     
-    CGRect rightRect = CGRectMake(100.0f, 20, self.navigationController.view.frame.size.width, self.navigationController.view.frame.size.height);
-    
-    [self animateHomeViewToSide:leftRect with:rightRect];
-}
-
-// animate home view to side rect
-- (void)animateHomeViewToSide:(CGRect)leftRect with:(CGRect)rightRect{
     [UIView animateWithDuration:0.2
                      animations:^{
-                         self.navigationController.view.frame = leftRect;
-                         self.rightAttachListView.view.frame = rightRect;
+                         self.view.frame = leftRect;
                      }
                      completion:^(BOOL finished){
+                         
                          UIControl *overView = [[UIControl alloc] init];
                          overView.tag = 10086;
                          overView.backgroundColor = [UIColor clearColor];
-                         overView.frame = self.navigationController.view.frame;
+                         overView.frame = CGRectMake(220.0f, 20, 100.0f, 480.0f);
                          [overView addTarget:self action:@selector(restoreViewLocation) forControlEvents:UIControlEventTouchDown];
-                         [[[UIApplication sharedApplication] keyWindow] addSubview:overView];
+                         [self.view addSubview:overView];
                      }];
 }
 
@@ -228,19 +234,14 @@
 - (void)restoreViewLocation {
     [UIView animateWithDuration:0.3
                      animations:^{
-                         self.navigationController.view.frame = CGRectMake(0,
+                         self.view.frame = CGRectMake(0,
                                                                            self.navigationController.view.frame.origin.y,
-                                                                           self.navigationController.view.frame.size.width,
-                                                                           self.navigationController.view.frame.size.height);
-                         self.rightAttachListView.view.frame = CGRectMake(320,
-                                                                           20,
-                                                                           self.navigationController.view.frame.size.width,
-                                                                           self.navigationController.view.frame.size.height);
+                                                                           320,
+                                                                           self.navigationController.view.frame.size.height -44-20);
                      }
                      completion:^(BOOL finished){
                          UIControl *overView = (UIControl *)[[[UIApplication sharedApplication] keyWindow] viewWithTag:10086];
                          [overView removeFromSuperview];
-                         self.rightAttachListView.view.hidden = YES;
                      }];
 }
 @end

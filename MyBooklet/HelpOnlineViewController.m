@@ -29,8 +29,6 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-//    self.webView = [[UIWebView alloc] init];
-    
     NSURL *nsUrl = [[NSURL alloc] initWithString:@"http://my.oschina.net/vimfung/blog/84200"];
     [self.webView loadRequest:[NSURLRequest requestWithURL:nsUrl]];
 }
