@@ -7,10 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C10768B816FEAA2100BF8EA0 /* Note_tag.m in Sources */ = {isa = PBXBuildFile; fileRef = C10768B716FEAA2100BF8EA0 /* Note_tag.m */; };
-		C10768BB16FEAA2100BF8EA0 /* Note.m in Sources */ = {isa = PBXBuildFile; fileRef = C10768BA16FEAA2100BF8EA0 /* Note.m */; };
-		C10768BE16FEAA2100BF8EA0 /* Note_attach.m in Sources */ = {isa = PBXBuildFile; fileRef = C10768BD16FEAA2100BF8EA0 /* Note_attach.m */; };
 		C10768C216FEAC1600BF8EA0 /* ALAssetsLibrary+CustomPhotoAlbum.m in Sources */ = {isa = PBXBuildFile; fileRef = C10768C116FEAC1600BF8EA0 /* ALAssetsLibrary+CustomPhotoAlbum.m */; };
+		C112A4631703EC5A001EEE3F /* Note_attach.m in Sources */ = {isa = PBXBuildFile; fileRef = C112A4621703EC5A001EEE3F /* Note_attach.m */; };
+		C112A4661703EC5A001EEE3F /* Note_tag.m in Sources */ = {isa = PBXBuildFile; fileRef = C112A4651703EC5A001EEE3F /* Note_tag.m */; };
+		C112A4691703EC5A001EEE3F /* Note.m in Sources */ = {isa = PBXBuildFile; fileRef = C112A4681703EC5A001EEE3F /* Note.m */; };
 		C15BD6AD16F5B7780082FF6E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C15BD6AC16F5B7780082FF6E /* UIKit.framework */; };
 		C15BD6AF16F5B7780082FF6E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C15BD6AE16F5B7780082FF6E /* Foundation.framework */; };
 		C15BD6B116F5B7780082FF6E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C15BD6B016F5B7780082FF6E /* CoreGraphics.framework */; };
@@ -57,14 +57,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		C10768B616FEAA2100BF8EA0 /* Note_tag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Note_tag.h; sourceTree = "<group>"; };
-		C10768B716FEAA2100BF8EA0 /* Note_tag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Note_tag.m; sourceTree = "<group>"; };
-		C10768B916FEAA2100BF8EA0 /* Note.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Note.h; sourceTree = "<group>"; };
-		C10768BA16FEAA2100BF8EA0 /* Note.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Note.m; sourceTree = "<group>"; };
-		C10768BC16FEAA2100BF8EA0 /* Note_attach.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Note_attach.h; sourceTree = "<group>"; };
-		C10768BD16FEAA2100BF8EA0 /* Note_attach.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Note_attach.m; sourceTree = "<group>"; };
 		C10768C016FEAC1600BF8EA0 /* ALAssetsLibrary+CustomPhotoAlbum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ALAssetsLibrary+CustomPhotoAlbum.h"; sourceTree = "<group>"; };
 		C10768C116FEAC1600BF8EA0 /* ALAssetsLibrary+CustomPhotoAlbum.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ALAssetsLibrary+CustomPhotoAlbum.m"; sourceTree = "<group>"; };
+		C112A4611703EC5A001EEE3F /* Note_attach.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Note_attach.h; sourceTree = "<group>"; };
+		C112A4621703EC5A001EEE3F /* Note_attach.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Note_attach.m; sourceTree = "<group>"; };
+		C112A4641703EC5A001EEE3F /* Note_tag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Note_tag.h; sourceTree = "<group>"; };
+		C112A4651703EC5A001EEE3F /* Note_tag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Note_tag.m; sourceTree = "<group>"; };
+		C112A4671703EC5A001EEE3F /* Note.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Note.h; sourceTree = "<group>"; };
+		C112A4681703EC5A001EEE3F /* Note.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Note.m; sourceTree = "<group>"; };
 		C15BD6A816F5B7780082FF6E /* MyBooklet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyBooklet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C15BD6AC16F5B7780082FF6E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		C15BD6AE16F5B7780082FF6E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -233,12 +233,12 @@
 			isa = PBXGroup;
 			children = (
 				C15BD72616F5CED60082FF6E /* GNote.xcdatamodeld */,
-				C10768B616FEAA2100BF8EA0 /* Note_tag.h */,
-				C10768B716FEAA2100BF8EA0 /* Note_tag.m */,
-				C10768B916FEAA2100BF8EA0 /* Note.h */,
-				C10768BA16FEAA2100BF8EA0 /* Note.m */,
-				C10768BC16FEAA2100BF8EA0 /* Note_attach.h */,
-				C10768BD16FEAA2100BF8EA0 /* Note_attach.m */,
+				C112A4671703EC5A001EEE3F /* Note.h */,
+				C112A4681703EC5A001EEE3F /* Note.m */,
+				C112A4641703EC5A001EEE3F /* Note_tag.h */,
+				C112A4651703EC5A001EEE3F /* Note_tag.m */,
+				C112A4611703EC5A001EEE3F /* Note_attach.h */,
+				C112A4621703EC5A001EEE3F /* Note_attach.m */,
 			);
 			name = db;
 			sourceTree = "<group>";
@@ -429,10 +429,10 @@
 				C15BD72B16F5EBE70082FF6E /* NoteDataModelUtil.m in Sources */,
 				C1A52F0816F7255300CF6D29 /* RecordAudioViewController.m in Sources */,
 				C1C8DC2A16FC671E005F8019 /* AttachPreviewViewController.m in Sources */,
-				C10768B816FEAA2100BF8EA0 /* Note_tag.m in Sources */,
-				C10768BB16FEAA2100BF8EA0 /* Note.m in Sources */,
-				C10768BE16FEAA2100BF8EA0 /* Note_attach.m in Sources */,
 				C10768C216FEAC1600BF8EA0 /* ALAssetsLibrary+CustomPhotoAlbum.m in Sources */,
+				C112A4631703EC5A001EEE3F /* Note_attach.m in Sources */,
+				C112A4661703EC5A001EEE3F /* Note_tag.m in Sources */,
+				C112A4691703EC5A001EEE3F /* Note.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

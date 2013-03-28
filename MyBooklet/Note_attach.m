@@ -2,8 +2,8 @@
 //  Note_attach.m
 //  MyBooklet
 //
-//  Created by wangxiaohong on 3/24/13.
-//  Copyright (c) 2013 wangxiaohong. All rights reserved.
+//  Created by wangxiaohong on 13-3-28.
+//  Copyright (c) 2013年 wangxiaohong. All rights reserved.
 //
 
 #import "Note_attach.h"

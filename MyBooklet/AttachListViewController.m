@@ -267,7 +267,7 @@
     [noteAttach setName:name ];
     [noteAttach setNoteId:self.note.noteId];
     [noteAttach setCreateTime:[NSDate date]];
-    [noteAttach setType:[NSNumber numberWithInt:type]];
+    [noteAttach setType:[NSNumber numberWithInt:1]];
     
     [noteAttach setUrl:url];
     [noteAttach setInNote:self.note];
