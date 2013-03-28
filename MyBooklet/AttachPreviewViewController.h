@@ -11,7 +11,7 @@
 #import "ALAssetsLibrary+CustomPhotoAlbum.h"
 
 @interface AttachPreviewViewController : UIViewController
-@property (strong, nonatomic) IBOutlet UIWebView *webview;
+
 @property (strong, nonatomic) Note_attach *noteAttach;
 @property (strong, nonatomic) ALAssetsLibrary *assetsLibrary;
 

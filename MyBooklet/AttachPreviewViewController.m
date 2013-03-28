@@ -8,6 +8,9 @@
 
 #import "AttachPreviewViewController.h"
 #import "ALAssetsLibrary+CustomPhotoAlbum.h"
+#import "Const.h"
+#import <MediaPlayer/MediaPlayer.h>
+#import <AVFoundation/AVFoundation.h>
 
 @interface AttachPreviewViewController ()
 
@@ -29,6 +32,7 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    [self showInfo];
 }
 
 - (void)didReceiveMemoryWarning
@@ -45,14 +49,23 @@
 - (void)setDataSource:(Note_attach *)attach
 {
     self.noteAttach = attach;
+}
+
+/**
+ *	@brief	显示webview内容
+ */
+- (void)showInfo
+{
+    [self cleanView];
     // type:0 相册图片 1 声音 2 视频 3 网页
-    switch ([attach.type intValue]) {
+    switch ([noteAttach.type intValue]) {
         case 0:
             [self addImgToWebview];
             break;
         case 1:
             break;
         case 2:
+            [self playMovie];
             break;
         case 3:
             [self showWebSite];
@@ -61,6 +74,18 @@
             break;
     }
 }
+
+/**
+ *	@brief	清理当前视图
+ */
+-(void)cleanView
+{
+    for (int i = 0; i < self.view.subviews.count; i ++) {
+        UIView *view = self.view.subviews[i];
+        [view removeFromSuperview];
+    }
+}
+
 
 /**
  *	@brief	是图片资源，添加imgview到webview上
@@ -75,24 +100,60 @@
                             UIImageView *imgView = [[UIImageView alloc] initWithImage:[UIImage imageWithCGImage:asset.defaultRepresentation.fullScreenImage]];
                             
                             // 等比例缩放图片，暂时先不care
-                            imgView.frame = CGRectMake(0, 0, self.webview.frame.size.width, self.webview.frame.size.height);
-                            [self.webview addSubview:imgView];
+                            imgView.frame = CGRectMake(0, 0, MainWidth, MainHeight);
+                            [self.view addSubview:imgView];
                         }
                        failureBlock:^(NSError *error) {
                            NSLog(@"!!!ERROR: cannot get image: %@", [error description]);
                        }];
 }
 
+
+/**
+ *	@brief	播放视频
+ */
+- (void)playMovie
+{
+    MPMoviePlayerController *moviePlayer = [[MPMoviePlayerController alloc]
+                        initWithContentURL: [NSURL
+                                             fileURLWithPath:
+                                             noteAttach.url]];
+    if([moviePlayer respondsToSelector:@selector(setAllowsAirPlay:)]) {
+        moviePlayer.allowsAirPlay = NO;
+    }
+
+    [self.view addSubview:moviePlayer.view];
+	[[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(playMovieFinished:)
+                                                 name:MPMoviePlayerPlaybackDidFinishNotification
+                                               object:moviePlayer];
+    [moviePlayer setFullscreen:YES animated:YES];
+    [self setcon]
+}
+
+
+
+- (void)playMovieFinished:(NSNotification*)theNotification
+{
+    [[NSNotificationCenter defaultCenter]
+     removeObserver:self
+     name:MPMoviePlayerPlaybackDidFinishNotification
+     object:theNotification.object];
+}
+
 /**
  *	@brief	显示网站
  */
--(void)showWebSite
+- (void)showWebSite
 {
-    NSURLRequest *request =[NSURLRequest requestWithURL:[NSURL URLWithString:noteAttach.url]];
-    [self.webview loadRequest:request];
+    UIWebView *webview = [[UIWebView alloc] init];
+    webview.scalesPageToFit = YES;
+    webview.frame = CGRectMake(0, 0, MainWidth, MainHeight);
     
-    NSURL *nsUrl = [[NSURL alloc] initWithString:@"http://www.baidu.com"];
-    [self.webview loadRequest:[NSURLRequest requestWithURL:nsUrl]];
+    NSURLRequest *request =[NSURLRequest requestWithURL:[NSURL URLWithString:noteAttach.url]];
+    [webview loadRequest:request];
+    
+    [self.view addSubview:webview];
 }
 
 /**

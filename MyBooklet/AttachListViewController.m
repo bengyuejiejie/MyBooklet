@@ -11,6 +11,7 @@
 #import "RecordAudioViewController.h"
 #import "AttachPreviewViewController.h"
 #import "NotePreviewViewController.h"
+#import <MobileCoreServices/MobileCoreServices.h>
 
 @interface AttachListViewController ()
 
@@ -172,6 +173,8 @@
         case 3:
             // 视频
             NSLog(@"录制视频");
+            // 拍照
+            [self addMedia:2];
             break;
         case 4:
             // 网页
@@ -200,18 +203,30 @@
 }
 
 /**
- *	@brief	添加照片
+ *	@brief	添加照片,录制视频
  */
 - (void)addMedia:(int)selectIndex
 {
     UIImagePickerController *imagePicker;
     imagePicker = [[UIImagePickerController alloc] init];
-    
+    imagePicker.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+
     if (selectIndex == 0) {
         imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+        
     } else {
         if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
             imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
+            
+            // 录制视频
+            if (selectIndex == 2) {
+                NSArray *sourceTypes = [UIImagePickerController availableMediaTypesForSourceType:imagePicker.sourceType];
+                if ([sourceTypes containsObject:(NSString *)kUTTypeMovie ])
+                {
+                    imagePicker.mediaTypes= [NSArray arrayWithObjects:(NSString *)kUTTypeMovie,nil];
+                }
+            }
+            
         } else {
             NSLog(@"在模拟器上无法打开照相机，请在真机中使用");
         }
@@ -225,10 +240,66 @@
         didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
     [picker dismissViewControllerAnimated:YES completion:nil];
-    NSString *url = [[info objectForKey:UIImagePickerControllerReferenceURL] absoluteString];
 
-    // 图片 type：0
-    [self addToAttachList:[NSString stringWithFormat:@"图片: %d", curAttachIndex] url:url type:0];
+    // 视频
+    if ([[info objectForKey:UIImagePickerControllerMediaType] isEqualToString:@"public.movie"])
+    {
+        // The completion block to be executed after image taking action process done
+        void (^completionBlock)(NSURL *, NSError *) = ^(NSURL *assetURL, NSError *error) {
+            if (error) NSLog(@"error,  write the image data to the assets library (camera roll): %@",
+                             [error description]);
+            // Add new one to |photos_|
+            __block NSString *url = [assetURL absoluteString];
+            
+            // 视频 type：2
+            [self addToAttachList:[NSString stringWithFormat:@"视频: %d", curAttachIndex] url:url type:2];
+        };
+        
+        void (^failureBlock)(NSError *) = ^(NSError *error) {
+            if (error == nil) return;
+            NSLog(@"error, failed to add the asset to the custom photo album: %@", [error description]);
+        };
+        
+        ALAssetsLibrary *assetsLibrary = [[ALAssetsLibrary alloc] init];
+        [assetsLibrary saveVideo:[info objectForKey:UIImagePickerControllerMediaURL] toAlbum:@"Custom Video Album" completionBlock:completionBlock failureBlock:failureBlock];
+    }
+    else
+    {
+        if ([info objectForKey:UIImagePickerControllerReferenceURL])//从相册中读取
+        {
+            NSString *url = [[info objectForKey:UIImagePickerControllerReferenceURL] absoluteString];
+            
+            // 图片 type：0
+            [self addToAttachList:[NSString stringWithFormat:@"图片: %d", curAttachIndex] url:url type:0];
+            
+        }
+        else // 拍照
+        {
+            // The completion block to be executed after image taking action process done
+            void (^completionBlock)(NSURL *, NSError *) = ^(NSURL *assetURL, NSError *error) {
+                if (error) NSLog(@"error,  write the image data to the assets library (camera roll): %@",
+                                 [error description]);
+                // Add new one to |photos_|
+                __block NSString *url = [assetURL absoluteString];
+                
+                // 图片 type：0
+                [self addToAttachList:[NSString stringWithFormat:@"图片: %d", curAttachIndex] url:url type:0];
+            };
+            
+            void (^failureBlock)(NSError *) = ^(NSError *error) {
+                if (error == nil) return;
+                NSLog(@"error, failed to add the asset to the custom photo album: %@", [error description]);
+            };
+            
+            ALAssetsLibrary *assetsLibrary = [[ALAssetsLibrary alloc] init];
+            [assetsLibrary saveImage:(UIImage *)[info objectForKey:UIImagePickerControllerOriginalImage]
+                             toAlbum:@"Custom Photo Album"
+                     completionBlock:completionBlock
+                        failureBlock:failureBlock];
+            
+        }
+ 
+    }
 }
 
 /**
@@ -267,7 +338,7 @@
     [noteAttach setName:name ];
     [noteAttach setNoteId:self.note.noteId];
     [noteAttach setCreateTime:[NSDate date]];
-    [noteAttach setType:[NSNumber numberWithInt:1]];
+    [noteAttach setType:[NSNumber numberWithInt:type]];
     
     [noteAttach setUrl:url];
     [noteAttach setInNote:self.note];
@@ -285,6 +356,7 @@
 - (void)setNoteDataSource:(Note *)orginaNote
 {
     self.dataSource = [[NSMutableArray alloc] initWithArray:orginaNote.attachList.allObjects];
+    [self.tableView reloadData];
 }
 
 

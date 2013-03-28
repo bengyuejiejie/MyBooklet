@@ -148,6 +148,8 @@
     if (self)
     {
         NSArray *array = [orginaNote.keywords componentsSeparatedByString:@";"];
+        
+        // 设置array中的这些关键字为选中状态
     }
     
     return self;

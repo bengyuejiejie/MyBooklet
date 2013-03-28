@@ -8,12 +8,12 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "MyBooklet/AttachPreviewViewController.m"
-         timestampString = "386097298.149967"
+         timestampString = "386161529.533057"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "92"
-         endingLineNumber = "92"
-         landmarkName = "-showWebSite"
+         startingLineNumber = "116"
+         endingLineNumber = "116"
+         landmarkName = "-playMovie"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>
