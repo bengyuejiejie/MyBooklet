@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "Note_attach.h"
-#import "ALAssetsLibrary+CustomPhotoAlbum.h"
+#import <AssetsLibrary/AssetsLibrary.h>
 
 @interface AttachPreviewViewController : UIViewController
 

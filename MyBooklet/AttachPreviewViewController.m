@@ -7,7 +7,6 @@
 //
 
 #import "AttachPreviewViewController.h"
-#import "ALAssetsLibrary+CustomPhotoAlbum.h"
 #import "Const.h"
 #import <MediaPlayer/MediaPlayer.h>
 #import <AVFoundation/AVFoundation.h>
@@ -60,7 +59,7 @@
     // type:0 相册图片 1 声音 2 视频 3 网页
     switch ([noteAttach.type intValue]) {
         case 0:
-            [self addImgToWebview];
+            [self addImgToview];
             break;
         case 1:
             break;
@@ -91,7 +90,7 @@
  *	@brief	是图片资源，添加imgview到webview上
  *
  */
-- (void)addImgToWebview
+- (void)addImgToview
 {
     // Get image from Custom Photo Album for the selected photo url.
     if (! self.assetsLibrary) assetsLibrary = [[ALAssetsLibrary alloc] init];
@@ -100,7 +99,7 @@
                             UIImageView *imgView = [[UIImageView alloc] initWithImage:[UIImage imageWithCGImage:asset.defaultRepresentation.fullScreenImage]];
                             
                             // 等比例缩放图片，暂时先不care
-                            imgView.frame = CGRectMake(0, 0, MainWidth, MainHeight);
+                            imgView.frame = CGRectMake(0, 0, MainWidth, MainHeight - self.navigationController.view.frame.size.height);
                             [self.view addSubview:imgView];
                         }
                        failureBlock:^(NSError *error) {
@@ -114,31 +113,61 @@
  */
 - (void)playMovie
 {
-    MPMoviePlayerController *moviePlayer = [[MPMoviePlayerController alloc]
-                        initWithContentURL: [NSURL
-                                             fileURLWithPath:
-                                             noteAttach.url]];
-    if([moviePlayer respondsToSelector:@selector(setAllowsAirPlay:)]) {
-        moviePlayer.allowsAirPlay = NO;
-    }
-
-    [self.view addSubview:moviePlayer.view];
-	[[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(playMovieFinished:)
-                                                 name:MPMoviePlayerPlaybackDidFinishNotification
-                                               object:moviePlayer];
-    [moviePlayer setFullscreen:YES animated:YES];
-    [self setcon]
+    if (! self.assetsLibrary) assetsLibrary = [[ALAssetsLibrary alloc] init];
+    [assetsLibrary assetForURL:[NSURL URLWithString:self.noteAttach.url]
+                   resultBlock:^(ALAsset *asset) {
+                       
+                       NSLog(@"%@", asset);
+                       NSLog(@"%@",[asset valueForProperty:@"ALAssetPropertyURLs"]);
+                       NSLog(@"%@",[[asset valueForProperty:@"ALAssetPropertyURLs"] objectForKey:@"com.apple.quicktime-movie"]);
+                       
+                       NSMutableString *path = [[asset valueForProperty:@"ALAssetPropertyURLs"] objectForKey:@"com.apple.quicktime-movie"];
+                       NSString *videoPath = [NSString stringWithFormat:@"%@.MOV", path];
+                       MPMoviePlayerController *moviePlayer = [[MPMoviePlayerController alloc] initWithContentURL: asset.defaultRepresentation.url];
+                       [moviePlayer prepareToPlay];
+                       moviePlayer.shouldAutoplay = YES;
+//                       if([moviePlayer respondsToSelector:@selector(setAllowsAirPlay:)]) {
+//                           moviePlayer.allowsAirPlay = NO;
+//                       }
+                       
+                       [self.view addSubview:moviePlayer.view];
+                       [[NSNotificationCenter defaultCenter] addObserver:self
+                                                                selector:@selector(playMovieFinished:)
+                                                                    name:MPMoviePlayerPlaybackDidFinishNotification
+                                                                  object:moviePlayer];
+                       [[NSNotificationCenter defaultCenter] addObserver:self
+                                                                selector:@selector(playMovieFinished:)
+                                                                    name:MPMoviePlayerDidExitFullscreenNotification
+                                                                  object:moviePlayer];
+                       [moviePlayer setFullscreen:YES animated:YES];
+                       [moviePlayer play];
+                   }
+                  failureBlock:^(NSError *error) {
+                      NSLog(@"!!!ERROR: cannot get image: %@", [error description]);
+                  }];
+   
+//    [self setcon]
 }
 
 
 
 - (void)playMovieFinished:(NSNotification*)theNotification
 {
-    [[NSNotificationCenter defaultCenter]
-     removeObserver:self
-     name:MPMoviePlayerPlaybackDidFinishNotification
-     object:theNotification.object];
+    if (theNotification.name == MPMoviePlayerPlaybackDidFinishNotification)
+    {
+        [[NSNotificationCenter defaultCenter]
+         removeObserver:self
+         name:MPMoviePlayerPlaybackDidFinishNotification
+         object:theNotification.object];
+    }
+    else
+    {
+        [self dismissViewControllerAnimated:YES completion:nil];
+        [[NSNotificationCenter defaultCenter]
+         removeObserver:self
+         name:MPMoviePlayerDidExitFullscreenNotification
+         object:theNotification.object];
+    }
 }
 
 /**
@@ -148,7 +177,7 @@
 {
     UIWebView *webview = [[UIWebView alloc] init];
     webview.scalesPageToFit = YES;
-    webview.frame = CGRectMake(0, 0, MainWidth, MainHeight);
+    webview.frame = CGRectMake(0, 0, MainWidth, MainHeight - self.navigationController.view.frame.size.height);
     
     NSURLRequest *request =[NSURLRequest requestWithURL:[NSURL URLWithString:noteAttach.url]];
     [webview loadRequest:request];

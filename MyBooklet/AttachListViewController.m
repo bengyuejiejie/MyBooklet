@@ -12,6 +12,7 @@
 #import "AttachPreviewViewController.h"
 #import "NotePreviewViewController.h"
 #import <MobileCoreServices/MobileCoreServices.h>
+#import "ALAssetsLibrary+CustomPhotoAlbum.h"
 
 @interface AttachListViewController ()
 
