@@ -135,9 +135,6 @@
 }
 
 - (void)ok:(id)sender {
-    // 保存附件列表数据到EditNoteViewController中。
-//    [editNoteViewDelegate setaaaAttachList:[[NSSet alloc] initWithArray:self.dataSource]];
-    
     NSSet *attachList = [[NSSet alloc] initWithArray:self.dataSource];
     NSDictionary *dic = [[NSDictionary alloc] initWithObjectsAndKeys:attachList, @"Attach", nil];
     

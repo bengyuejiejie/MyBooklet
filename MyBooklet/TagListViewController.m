@@ -36,6 +36,13 @@
     [self setupView];
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    if (self.tableView) {
+        [self.tableView reloadData];
+    }
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -76,8 +83,6 @@
     }
     
     NSLog(@"The count of note_tag:%i",[self.dataSource count]);
-    
-    self.selectTagList = [[NSMutableArray alloc] init];
 }
 
 - (NSInteger)tableView:(UITableView *) tableView numberOfRowsInSection:(NSInteger)section
@@ -104,7 +109,15 @@
     [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
     
     [cell.textLabel setText:((Note_tag *)[self.dataSource objectAtIndex:indexPath.row]).name];
-    cell.accessoryType =  UITableViewCellAccessoryNone;
+    
+    if ([self.selectTagList containsObject:((Note_tag *)[self.dataSource objectAtIndex:indexPath.row]).name])
+    {
+        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+    }
+    else
+    {
+        cell.accessoryType = UITableViewCellAccessoryNone;
+    }
     return cell;
 }
 
@@ -147,9 +160,12 @@
     self = [super initWithNibName:@"TagListViewController" bundle:nil];
     if (self)
     {
-        NSArray *array = [orginaNote.keywords componentsSeparatedByString:@";"];
+        self.selectTagList = [[NSMutableArray alloc] init];
+        NSArray *tagArr = [orginaNote.keywords componentsSeparatedByString:@";"];
         
-        // 设置array中的这些关键字为选中状态
+        for (int i = 0; i < tagArr.count; i ++) {
+            [self.selectTagList addObject:tagArr[i]];
+        }
     }
     
     return self;
@@ -175,7 +191,7 @@
     } else {
         NSLog(@"Save successful!");
     }
-    
+    self.inputTextField.text = @"";
     [self.dataSource addObject:tag];
     
     [self.tableView reloadData];
