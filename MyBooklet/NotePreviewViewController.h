@@ -16,7 +16,6 @@
 @property (strong, nonatomic) Note *note;
 
 @property (strong, nonatomic) IBOutlet UILabel *titleLabel;
-@property (strong, nonatomic) UIView *keywordView;
 @property (strong, nonatomic) IBOutlet UIToolbar *toolBar;
 @property (strong, nonatomic) IBOutlet UITextView *contentTextView;
 

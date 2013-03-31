@@ -76,7 +76,6 @@
         [self.titleLabel setText:[self.note title]];
         NSArray *arr = [self.note.keywords componentsSeparatedByString:@";"];
 
-        [self.keywordView removeFromSuperview];
         for (int i = 0; i < arr.count; i ++) {
             [self generateKeyWordBtn:arr[i] index:i];
         }
@@ -91,17 +90,13 @@
  */
 - (void)generateKeyWordBtn:(NSString *)str index:(int)i
 {
-    self.keywordView = [[UIView alloc] initWithFrame:CGRectMake(20, 55, 300, 20)];
-    self.keywordView.tag = 100;
-    
-    UIButton *btn = [[UIButton alloc] initWithFrame:CGRectMake(i*55, 0, 45, 20)];
+    UIButton *btn = [[UIButton alloc] initWithFrame:CGRectMake(20 + i*55, 55, 45, 20)];
     [btn setBackgroundColor:[UIColor lightGrayColor]];
     btn.titleLabel.font = [UIFont systemFontOfSize: 12];
     [btn setTitle:str forState:UIControlStateNormal];
     [btn addTarget:self action:@selector(clickKeyWordBtn:) forControlEvents:UIControlEventTouchUpInside];
 
-    [self.keywordView addSubview:btn];
-    [self.view addSubview:self.keywordView];
+    [self.view addSubview:btn];
 }
 
 /**

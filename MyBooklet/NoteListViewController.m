@@ -9,6 +9,7 @@
 #import "NoteListViewController.h"
 #import "Note.h"
 #import "NotePreviewViewController.h"
+#import "NoteDataModelUtil.h"
 
 @interface NoteListViewController ()
 
@@ -78,42 +79,17 @@
  */
 - (NSMutableArray *)fetchNotes
 {
-    //创建取回数据请求
-    NSFetchRequest *request = [[NSFetchRequest alloc] init];
-    //设置要检索哪种类型的实体对象
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Note" inManagedObjectContext:self.delegate.managedObjectContext];
-    //设置请求实体
-    [request setEntity:entity];
-    
-    BOOL (^block)(id, NSDictionary *) = ^(id evaluatedObject, NSDictionary *bindings) {
-        
-        if ((Note *)evaluatedObject) {
-            return [((Note *)evaluatedObject).keywords isEqualToString:@"iOS"];
-        }
-        return YES;
-    };
+    NSMutableArray *mutableFetchResult = [[NSMutableArray alloc] init];
 
-    NSPredicate *p = [NSPredicate predicateWithBlock:^(id evaluatedObject, NSDictionary *bindings) {
-        
-//        if ((Note *)evaluatedObject) {
-//            return [((Note *)evaluatedObject).keywords isEqualToString:@"iOS"];
-//        }
-        return YES;
-    }];
-    
-    //:@"self.keywords == %@",@"iOS"];
-//    [request setPredicate:p];
-    //指定对结果的排序方式
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"modifyTime" ascending:NO];
-    NSArray *sortDescriptions = [[NSArray alloc]initWithObjects:sortDescriptor, nil];
-    [request setSortDescriptors:sortDescriptions];
-    
-    NSError *error = nil;
-    //执行获取数据请求，返回数组
-    NSMutableArray *mutableFetchResult = [[self.delegate.managedObjectContext executeFetchRequest:request error:&error] mutableCopy];
-    
-    if (mutableFetchResult == nil) {
-        NSLog(@"Error: %@,%@",error,[error userInfo]);
+    NSArray *allNoteList= [[NoteDataModelUtil sharedInstance] getNoteList];
+    for (int i = 0; i < allNoteList.count; i ++) {
+        Note *note = allNoteList[i];
+        if (note) {
+            NSArray *keywordArr = [note.keywords componentsSeparatedByString:@";"];
+            if (keywordArr && [keywordArr containsObject:self.keyword]) {
+                [mutableFetchResult addObject:note];
+            }
+        }
     }
     
     NSLog(@"The count of notes:%i",[mutableFetchResult count]);
