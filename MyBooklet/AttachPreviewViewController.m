@@ -8,8 +8,6 @@
 
 #import "AttachPreviewViewController.h"
 #import "Const.h"
-#import <MediaPlayer/MediaPlayer.h>
-#import <AVFoundation/AVFoundation.h>
 
 @interface AttachPreviewViewController ()
 
@@ -62,6 +60,7 @@
             [self addImgToview];
             break;
         case 1:
+            [self playAudio];
             break;
         case 2:
 //            [self playMovie];
@@ -107,26 +106,27 @@
                        }];
 }
 
-
-
-
-
-- (void)playMovieFinished:(NSNotification*)theNotification
+- (void)playAudio
 {
-    if (theNotification.name == MPMoviePlayerPlaybackDidFinishNotification)
-    {
-        [[NSNotificationCenter defaultCenter]
-         removeObserver:self
-         name:MPMoviePlayerPlaybackDidFinishNotification
-         object:theNotification.object];
-    }
-    else
-    {
-        [self dismissViewControllerAnimated:YES completion:nil];
-        [[NSNotificationCenter defaultCenter]
-         removeObserver:self
-         name:MPMoviePlayerDidExitFullscreenNotification
-         object:theNotification.object];
+    NSArray *paths = NSSearchPathForDirectoriesInDomains( NSDocumentDirectory,                                                                          NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    
+    NSURL *soundFileURL=[NSURL fileURLWithPath:
+                         [documentsDirectory stringByAppendingPathComponent:@"sound.caf"]];
+    
+    self.audioPlayer =  [[AVAudioPlayer alloc]
+                         initWithContentsOfURL:soundFileURL error:nil];
+    
+    UIButton *btn = [[UIButton alloc] initWithFrame:CGRectMake(100, 100, 200, 100)];
+    [btn setTitle:@"播放" forState:UIControlStateNormal];
+    [btn addTarget:self action:@selector(playAudio:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:btn];
+}
+
+- (void)playAudio:(id)sender
+{
+    if (self.audioPlayer) {
+        [self.audioPlayer play];
     }
 }
 

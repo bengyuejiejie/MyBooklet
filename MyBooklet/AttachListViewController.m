@@ -372,6 +372,7 @@
 - (void)setNoteDataSource:(Note *)orginaNote
 {
     self.dataSource = [[NSMutableArray alloc] initWithArray:orginaNote.attachList.allObjects];
+    curAttachIndex = self.dataSource.count;
     [self.tableView reloadData];
 }
 

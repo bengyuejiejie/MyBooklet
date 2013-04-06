@@ -33,9 +33,11 @@
     self.delegate = [[AttachListViewController alloc] init];
     
     //Setup the audio recorder
+    NSArray *paths = NSSearchPathForDirectoriesInDomains( NSDocumentDirectory,                                                                          NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    
     NSURL *soundFileURL=[NSURL fileURLWithPath:
-                         [NSTemporaryDirectory()
-                          stringByAppendingString:@"sound.caf"]];
+                         [documentsDirectory stringByAppendingPathComponent:@"sound.caf"]];
 	
 	NSDictionary *soundSetting;
     soundSetting = [NSDictionary dictionaryWithObjectsAndKeys:
@@ -50,12 +52,8 @@
                           settings: soundSetting
                           error: nil];
     
-    //Setup the audio player
-    NSURL *noSoundFileURL=[NSURL fileURLWithPath:
-                           [[NSBundle mainBundle]
-                            pathForResource:@"norecording" ofType:@"wav"]];
     self.audioPlayer =  [[AVAudioPlayer alloc]
-                         initWithContentsOfURL:noSoundFileURL error:nil];
+                         initWithContentsOfURL:soundFileURL error:nil];
     
 }
 
@@ -82,9 +80,14 @@
  		[self.recordBtn setTitle:@"录音"
                            forState:UIControlStateNormal];
         // Load the new sound in the audioPlayer for playback
+        NSArray *paths = NSSearchPathForDirectoriesInDomains( NSDocumentDirectory,                                                                          NSUserDomainMask, YES);
+        NSString *documentsDirectory = [paths objectAtIndex:0];
+        
         NSURL *soundFileURL=[NSURL fileURLWithPath:
-                             [NSTemporaryDirectory()
-                              stringByAppendingString:@"sound.caf"]];
+                             [documentsDirectory stringByAppendingPathComponent:@"sound.caf"]];
+//        NSURL *soundFileURL=[NSURL fileURLWithPath:
+//                             [NSTemporaryDirectory()
+//                              stringByAppendingString:@"sound.caf"]];
         self.audioPlayer =  [[AVAudioPlayer alloc]
                              initWithContentsOfURL:soundFileURL error:nil];
 	}
@@ -111,18 +114,12 @@
  */
 - (IBAction)ok:(id)sender
 {
-    [self dismissViewControllerAnimated:YES completion:nil];
-    
     NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
     [dic setObject:@"3244" forKey:@"audioPath"];
     
     [[NSNotificationCenter defaultCenter] postNotificationName:@"ADD_RECORD_TO_ATTACHLIST" object:self userInfo:dic];
-}
-
-- (void)aaaaaa:(NSString *)str
-{
-    [self.delegate setRecordPath:self.audioPath];
-
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 /**
@@ -132,7 +129,7 @@
  */
 - (IBAction)cancel:(id)sender
 {
-    [self.navigationController popViewControllerAnimated:YES];
+[self dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end

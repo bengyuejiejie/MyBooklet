@@ -86,6 +86,5 @@ Copyright (C) 2010-2011 Apple Inc. All Rights Reserved.
 
 - (IBAction)play:(id)sender;
 - (IBAction)pause:(id)sender;
-- (IBAction)showMetadata:(id)sender;
 
 @end
