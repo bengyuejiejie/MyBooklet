@@ -12,6 +12,8 @@
 		C112A4661703EC5A001EEE3F /* Note_tag.m in Sources */ = {isa = PBXBuildFile; fileRef = C112A4651703EC5A001EEE3F /* Note_tag.m */; };
 		C112A4691703EC5A001EEE3F /* Note.m in Sources */ = {isa = PBXBuildFile; fileRef = C112A4681703EC5A001EEE3F /* Note.m */; };
 		C112A46D1703F7CC001EEE3F /* Const.m in Sources */ = {isa = PBXBuildFile; fileRef = C112A46C1703F7CC001EEE3F /* Const.m */; };
+		C12ED1AA1709E32E009E5325 /* AVPlayerDemoPlaybackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C12ED1A71709E32E009E5325 /* AVPlayerDemoPlaybackViewController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		C12ED1AB1709E32E009E5325 /* AVPlayerDemoPlaybackView.m in Sources */ = {isa = PBXBuildFile; fileRef = C12ED1A91709E32E009E5325 /* AVPlayerDemoPlaybackView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		C15BD6AD16F5B7780082FF6E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C15BD6AC16F5B7780082FF6E /* UIKit.framework */; };
 		C15BD6AF16F5B7780082FF6E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C15BD6AE16F5B7780082FF6E /* Foundation.framework */; };
 		C15BD6B116F5B7780082FF6E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C15BD6B016F5B7780082FF6E /* CoreGraphics.framework */; };
@@ -49,6 +51,9 @@
 		C15BD72516F5CC2D0082FF6E /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C15BD72416F5CC2D0082FF6E /* MainViewController.m */; };
 		C15BD72816F5CED60082FF6E /* GNote.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C15BD72616F5CED60082FF6E /* GNote.xcdatamodeld */; };
 		C15BD72B16F5EBE70082FF6E /* NoteDataModelUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = C15BD72A16F5EBE70082FF6E /* NoteDataModelUtil.m */; };
+		C16E369117103448001A3800 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C16E369017103448001A3800 /* QuartzCore.framework */; };
+		C16E369317103469001A3800 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C16E369217103469001A3800 /* CoreMedia.framework */; };
+		C16E369517103944001A3800 /* AVPlayerDemoPlaybackView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C16E369417103944001A3800 /* AVPlayerDemoPlaybackView.xib */; };
 		C1A52F0816F7255300CF6D29 /* RecordAudioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1A52F0616F7255200CF6D29 /* RecordAudioViewController.m */; };
 		C1A52F0916F7255300CF6D29 /* RecordAudioViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1A52F0716F7255200CF6D29 /* RecordAudioViewController.xib */; };
 		C1A52F0B16F72B3600CF6D29 /* norecording.wav in Resources */ = {isa = PBXBuildFile; fileRef = C1A52F0A16F72B3600CF6D29 /* norecording.wav */; };
@@ -70,6 +75,10 @@
 		C112A4681703EC5A001EEE3F /* Note.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Note.m; sourceTree = "<group>"; };
 		C112A46B1703F7CC001EEE3F /* Const.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Const.h; sourceTree = "<group>"; };
 		C112A46C1703F7CC001EEE3F /* Const.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Const.m; sourceTree = "<group>"; };
+		C12ED1A61709E32E009E5325 /* AVPlayerDemoPlaybackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVPlayerDemoPlaybackViewController.h; sourceTree = "<group>"; };
+		C12ED1A71709E32E009E5325 /* AVPlayerDemoPlaybackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVPlayerDemoPlaybackViewController.m; sourceTree = "<group>"; };
+		C12ED1A81709E32E009E5325 /* AVPlayerDemoPlaybackView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVPlayerDemoPlaybackView.h; sourceTree = "<group>"; };
+		C12ED1A91709E32E009E5325 /* AVPlayerDemoPlaybackView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVPlayerDemoPlaybackView.m; sourceTree = "<group>"; };
 		C15BD6A816F5B7780082FF6E /* MyBooklet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyBooklet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C15BD6AC16F5B7780082FF6E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		C15BD6AE16F5B7780082FF6E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -122,6 +131,9 @@
 		C15BD72716F5CED60082FF6E /* GNote.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = GNote.xcdatamodel; sourceTree = "<group>"; };
 		C15BD72916F5EBE70082FF6E /* NoteDataModelUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoteDataModelUtil.h; sourceTree = "<group>"; };
 		C15BD72A16F5EBE70082FF6E /* NoteDataModelUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoteDataModelUtil.m; sourceTree = "<group>"; };
+		C16E369017103448001A3800 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		C16E369217103469001A3800 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		C16E369417103944001A3800 /* AVPlayerDemoPlaybackView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AVPlayerDemoPlaybackView.xib; sourceTree = "<group>"; };
 		C1A52F0516F7255200CF6D29 /* RecordAudioViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecordAudioViewController.h; sourceTree = "<group>"; };
 		C1A52F0616F7255200CF6D29 /* RecordAudioViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecordAudioViewController.m; sourceTree = "<group>"; };
 		C1A52F0716F7255200CF6D29 /* RecordAudioViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RecordAudioViewController.xib; sourceTree = "<group>"; };
@@ -139,6 +151,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C16E369317103469001A3800 /* CoreMedia.framework in Frameworks */,
+				C16E369117103448001A3800 /* QuartzCore.framework in Frameworks */,
 				C1D0D0E31704563A00FD5F47 /* MediaPlayer.framework in Frameworks */,
 				C1D49E2F17044F8F00E7E9AD /* MobileCoreServices.framework in Frameworks */,
 				C1DBBE9E170332A2000BC152 /* AssetsLibrary.framework in Frameworks */,
@@ -158,6 +172,7 @@
 		C10768BF16FEAC0800BF8EA0 /* lib */ = {
 			isa = PBXGroup;
 			children = (
+				C12ED1AD1709E333009E5325 /* AVPlayer */,
 				C10768C316FEAC1E00BF8EA0 /* ALAssetsLibrary */,
 			);
 			name = lib;
@@ -181,6 +196,17 @@
 			name = const;
 			sourceTree = "<group>";
 		};
+		C12ED1AD1709E333009E5325 /* AVPlayer */ = {
+			isa = PBXGroup;
+			children = (
+				C12ED1A61709E32E009E5325 /* AVPlayerDemoPlaybackViewController.h */,
+				C12ED1A71709E32E009E5325 /* AVPlayerDemoPlaybackViewController.m */,
+				C12ED1A81709E32E009E5325 /* AVPlayerDemoPlaybackView.h */,
+				C12ED1A91709E32E009E5325 /* AVPlayerDemoPlaybackView.m */,
+			);
+			name = AVPlayer;
+			sourceTree = "<group>";
+		};
 		C15BD69D16F5B7780082FF6E = {
 			isa = PBXGroup;
 			children = (
@@ -201,6 +227,11 @@
 		C15BD6AB16F5B7780082FF6E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C16E369217103469001A3800 /* CoreMedia.framework */,
+				C16E369017103448001A3800 /* QuartzCore.framework */,
+				C1D0D0E21704563A00FD5F47 /* MediaPlayer.framework */,
+				C1D49E2E17044F8F00E7E9AD /* MobileCoreServices.framework */,
+				C1DBBE9D170332A2000BC152 /* AssetsLibrary.framework */,
 				C15BD6D516F5B91E0082FF6E /* CoreData.framework */,
 				C15BD6D316F5B9110082FF6E /* MessageUI.framework */,
 				C15BD6D116F5B9090082FF6E /* AVFoundation.framework */,
@@ -227,9 +258,6 @@
 		C15BD6B316F5B7780082FF6E /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				C1D0D0E21704563A00FD5F47 /* MediaPlayer.framework */,
-				C1D49E2E17044F8F00E7E9AD /* MobileCoreServices.framework */,
-				C1DBBE9D170332A2000BC152 /* AssetsLibrary.framework */,
 				C15BD6B416F5B7780082FF6E /* MyBooklet-Info.plist */,
 				C15BD6B516F5B7780082FF6E /* InfoPlist.strings */,
 				C15BD6B816F5B7780082FF6E /* main.m */,
@@ -328,6 +356,7 @@
 		C15BD6F216F5BF9E0082FF6E /* xib */ = {
 			isa = PBXGroup;
 			children = (
+				C16E369417103944001A3800 /* AVPlayerDemoPlaybackView.xib */,
 				C1C8DC2916FC671E005F8019 /* AttachPreviewViewController.xib */,
 				C1A52F0716F7255200CF6D29 /* RecordAudioViewController.xib */,
 				C15BD6FC16F5CA620082FF6E /* NoteListViewController.xib */,
@@ -424,6 +453,7 @@
 				C1A52F0916F7255300CF6D29 /* RecordAudioViewController.xib in Resources */,
 				C1A52F0B16F72B3600CF6D29 /* norecording.wav in Resources */,
 				C1C8DC2B16FC671E005F8019 /* AttachPreviewViewController.xib in Resources */,
+				C16E369517103944001A3800 /* AVPlayerDemoPlaybackView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -455,6 +485,8 @@
 				C112A4661703EC5A001EEE3F /* Note_tag.m in Sources */,
 				C112A4691703EC5A001EEE3F /* Note.m in Sources */,
 				C112A46D1703F7CC001EEE3F /* Const.m in Sources */,
+				C12ED1AA1709E32E009E5325 /* AVPlayerDemoPlaybackViewController.m in Sources */,
+				C12ED1AB1709E32E009E5325 /* AVPlayerDemoPlaybackView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

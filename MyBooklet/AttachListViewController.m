@@ -13,6 +13,7 @@
 #import "NotePreviewViewController.h"
 #import <MobileCoreServices/MobileCoreServices.h>
 #import "ALAssetsLibrary+CustomPhotoAlbum.h"
+#import "AVPlayerDemoPlaybackViewController.h"
 
 @interface AttachListViewController ()
 
@@ -102,12 +103,29 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (cellCanSelect) {
-        AttachPreviewViewController *vc = [[AttachPreviewViewController alloc] init];
         
         Note_attach *noteAttach = [self.dataSource objectAtIndex:indexPath.row];
+
+        // 视频，直接打开
+        if ([noteAttach.type intValue]== 2) {
+            [self playMovie:noteAttach.url];
+            return;
+        }
+        
+        AttachPreviewViewController *vc = [[AttachPreviewViewController alloc] init];
         [vc setDataSource:noteAttach];
         [self.notePreviewDelegate.navigationController pushViewController:vc animated:YES];
     }
+}
+
+/**
+ *	@brief	播放视频
+ */
+- (void)playMovie:(NSString *)url
+{
+    AVPlayerDemoPlaybackViewController *vc = [[AVPlayerDemoPlaybackViewController alloc] init];
+    [vc setURL:[[NSURL alloc] initWithString:url]];
+    [self.notePreviewDelegate.navigationController pushViewController:vc animated:YES];
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath

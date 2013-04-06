@@ -64,7 +64,7 @@
         case 1:
             break;
         case 2:
-            [self playMovie];
+//            [self playMovie];
             break;
         case 3:
             [self showWebSite];
@@ -108,46 +108,6 @@
 }
 
 
-/**
- *	@brief	播放视频
- */
-- (void)playMovie
-{
-    if (! self.assetsLibrary) assetsLibrary = [[ALAssetsLibrary alloc] init];
-    [assetsLibrary assetForURL:[NSURL URLWithString:self.noteAttach.url]
-                   resultBlock:^(ALAsset *asset) {
-                       
-                       NSLog(@"%@", asset);
-                       NSLog(@"%@",[asset valueForProperty:@"ALAssetPropertyURLs"]);
-                       NSLog(@"%@",[[asset valueForProperty:@"ALAssetPropertyURLs"] objectForKey:@"com.apple.quicktime-movie"]);
-                       
-                       NSMutableString *path = [[asset valueForProperty:@"ALAssetPropertyURLs"] objectForKey:@"com.apple.quicktime-movie"];
-                       NSString *videoPath = [NSString stringWithFormat:@"%@.MOV", path];
-                       MPMoviePlayerController *moviePlayer = [[MPMoviePlayerController alloc] initWithContentURL: asset.defaultRepresentation.url];
-                       [moviePlayer prepareToPlay];
-                       moviePlayer.shouldAutoplay = YES;
-//                       if([moviePlayer respondsToSelector:@selector(setAllowsAirPlay:)]) {
-//                           moviePlayer.allowsAirPlay = NO;
-//                       }
-                       
-                       [self.view addSubview:moviePlayer.view];
-                       [[NSNotificationCenter defaultCenter] addObserver:self
-                                                                selector:@selector(playMovieFinished:)
-                                                                    name:MPMoviePlayerPlaybackDidFinishNotification
-                                                                  object:moviePlayer];
-                       [[NSNotificationCenter defaultCenter] addObserver:self
-                                                                selector:@selector(playMovieFinished:)
-                                                                    name:MPMoviePlayerDidExitFullscreenNotification
-                                                                  object:moviePlayer];
-                       [moviePlayer setFullscreen:YES animated:YES];
-                       [moviePlayer play];
-                   }
-                  failureBlock:^(NSError *error) {
-                      NSLog(@"!!!ERROR: cannot get image: %@", [error description]);
-                  }];
-   
-//    [self setcon]
-}
 
 
 
