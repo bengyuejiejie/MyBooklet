@@ -30,7 +30,7 @@
         <attribute name="useCount" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Note" positionX="160" positionY="192" width="128" height="178"/>
+        <element name="Note" positionX="160" positionY="192" width="128" height="180"/>
         <element name="Note_attach" positionX="430" positionY="192" width="128" height="150"/>
         <element name="Note_tag" positionX="322" positionY="375" width="128" height="150"/>
     </elements>

@@ -9,6 +9,7 @@
 #import "BookletAppDelegate.h"
 #import "MoreViewController.h"
 #import "MainViewController.h"
+#import "GeneralUtil.h"
 
 @implementation BookletAppDelegate
 @synthesize tabBarController;
@@ -77,6 +78,14 @@
             NSLog(@"Error: %@,%@",error,[error userInfo]);
             abort();
         }
+    }
+    
+    // 删除document下的temp目录
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    NSString *documentsDirectory = [GeneralUtil getDocumentDirectory];
+    
+    if ([fileManager fileExistsAtPath:@"temp" isDirectory:YES]) {
+        [fileManager removeItemAtPath:[documentsDirectory stringByAppendingPathComponent:@"temp"] error:NULL];
     }
 }
 

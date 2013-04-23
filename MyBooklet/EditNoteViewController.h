@@ -17,7 +17,7 @@
 
 @property (strong, nonatomic) IBOutlet UITextField *titleTextField;
 @property (strong, nonatomic) IBOutlet UIButton *keyWordBtn;
-@property (strong, nonatomic) IBOutlet UITextView *contentTextView;
+@property (strong, nonatomic) IBOutlet UIWebView *contentWebView;
 @property (strong, nonatomic) IBOutlet UIToolbar *toolBar;
 
 @property (strong, nonatomic) Note *note;

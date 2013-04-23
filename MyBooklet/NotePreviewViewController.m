@@ -10,6 +10,7 @@
 #import "AttachListViewController.h"
 #import "NoteListViewController.h"
 #import "NoteDataModelUtil.h"
+#import "GeneralUtil.h"
 
 @interface NotePreviewViewController ()
 
@@ -59,7 +60,7 @@
     [self setNoteInfo:self.note];
     self.title = @"文章详情";
     
-    self.contentTextView.editable = NO;
+    [self.contentWebView setUserInteractionEnabled:NO];
     
     self.rightAttachListView = [[AttachListViewController alloc] init];
 }
@@ -73,14 +74,30 @@
 - (void)setNoteInfo:(Note *)note
 {
     if (self.note) {
-        [self.titleLabel setText:[self.note title]];
+        [self.titleLabel setText:[self.note title]]; 
         NSArray *arr = [self.note.keywords componentsSeparatedByString:@";"];
 
         for (int i = 0; i < arr.count; i ++) {
             [self generateKeyWordBtn:arr[i] index:i];
         }
-        [self.contentTextView setText:[self.note content]];
+        [self setContent];
     }
+}
+
+/**
+ *	@brief	设置笔记的内容
+ *
+ *	@param 	str
+ */
+- (void)setContent
+{
+    NSString *documentsDirectory = [GeneralUtil getDocumentDirectory];
+    NSString *noteIdDirectory = [documentsDirectory stringByAppendingPathComponent:[self.note noteId]];
+    NSString *htmlDocDirectory = [noteIdDirectory stringByAppendingPathComponent:@"index.html"];
+    
+    NSString * htmlString = [NSString stringWithContentsOfFile:htmlDocDirectory encoding:(NSUTF8StringEncoding) error:nil];
+    
+    [self.contentWebView loadHTMLString:htmlString baseURL:nil];
 }
 
 /**

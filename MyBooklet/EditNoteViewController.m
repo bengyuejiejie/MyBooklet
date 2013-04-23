@@ -10,6 +10,7 @@
 #import "NotePreviewViewController.h"
 #import "TagListViewController.h"
 #import "NoteDataModelUtil.h"
+#import "GeneralUtil.h"
 
 @interface EditNoteViewController ()
 
@@ -19,7 +20,7 @@
 
 @synthesize titleTextField;
 @synthesize keyWordBtn;
-@synthesize contentTextView;
+@synthesize contentWebView;
 
 @synthesize toolBar;
 @synthesize coreDataDelegate;
@@ -66,24 +67,105 @@
     
     titleTextField.delegate = self;
     
-    if (self.note) {
+    if (self.note)
+    {
         // Populate Form Fields
         [self.titleTextField setText:[self.note title]];
         [self.keyWordBtn setTitle:[self.note keywords] forState:UIControlStateNormal];
-        [self.contentTextView setText:[self.note content]];
+        [self setContent];
     }
+    else
+    {
+        [self createContentHtmlInDocument];
+    }
+}
+
+/**
+ *	@brief	设置笔记的内容
+ *
+ *	@param 	str 	
+ */
+- (void)setContent
+{
+    NSString *documentsDirectory = [GeneralUtil getDocumentDirectory];
+    NSString *noteIdDirectory = [documentsDirectory stringByAppendingPathComponent:[self.note noteId]];
+    NSString *htmlDocDirectory = [noteIdDirectory stringByAppendingPathComponent:@"index.html"];
+
+    NSString * htmlString = [NSString stringWithContentsOfFile:htmlDocDirectory encoding:(NSUTF8StringEncoding) error:nil];
+    
+    [self.contentWebView loadHTMLString:htmlString baseURL:nil];
+}
+
+/**
+ *	@brief	在document目录下创建contentHtml
+ */
+- (void)createContentHtmlInDocument
+{
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+
+    NSString *documentsDirectory = [GeneralUtil getDocumentDirectory];
+    
+    // 先设置一个临时目录
+    NSString *noteIdDirectory = [documentsDirectory stringByAppendingPathComponent:@"temp"];
+    NSString *htmlDocDirectory = [noteIdDirectory stringByAppendingPathComponent:@"index.html"];
+
+    // 创建一个noteID的文件夹
+    NSError *createDirectoryError;
+    BOOL createDirectorySuccess = [fileManager createDirectoryAtPath:noteIdDirectory withIntermediateDirectories:NO attributes:nil error:&createDirectoryError];
+    
+    if (createDirectorySuccess)
+    {
+        // 获取工程resource路径下的index.html路径
+        NSString *indexHtmlDirectory = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"index.html"];
+            
+        // 把index.html 文件复制到dnoteID的文件夹中
+        NSError *copyItemError;
+        BOOL success = [fileManager copyItemAtPath:indexHtmlDirectory toPath:htmlDocDirectory error:&copyItemError];
+        if (!success)
+        {
+            NSLog(@"%@", [copyItemError localizedDescription]);
+        }
+        else
+        {
+            NSString * htmlString = [NSString stringWithContentsOfFile:indexHtmlDirectory encoding:(NSUTF8StringEncoding) error:nil];
+            [self.contentWebView loadHTMLString:htmlString baseURL:nil];
+        }
+    }
+    else
+    {
+        NSLog(@"%@", [createDirectoryError localizedDescription]); 
+    }
+}
+
+/**
+ *	@brief	内容加载完成
+ *
+ *	@param 	webView 	
+ */
+- (void)webViewDidFinishLoad:(UIWebView *)webView
+{
     
 }
 
-- (void)back:(id)sender {
+
+- (void)back:(id)sender
+{
     // Dismiss View Controller
     [self dismissViewControllerAnimated:YES completion:nil];
     
     // 之前添加附件的操作去除，没有保存到数据库
     [self.coreDataDelegate.managedObjectContext rollback];
+    
+    // 删除document下的temp目录
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    NSString *documentsDirectory = [GeneralUtil getDocumentDirectory];
+    
+    [fileManager removeItemAtPath:[documentsDirectory stringByAppendingPathComponent:@"temp"] error:NULL];
 }
 
-- (void)save:(id)sender {
+- (void)save:(id)sender
+{
+    BOOL isNewNote = !self.note;
     if (!self.note) {
         // Create Note
         self.note = (Note *)[NSEntityDescription insertNewObjectForEntityForName:@"Note" inManagedObjectContext:self.coreDataDelegate.managedObjectContext];
@@ -91,6 +173,7 @@
         // Configure Note
         [self.note setCreateTime:[NSDate date]];
         [self.note setModifyTime:[NSDate date]];
+        [self.note setNoteId:[[NSDate date] descriptionWithLocale:[NSLocale currentLocale]]];
     }
     else
     {
@@ -100,13 +183,57 @@
     // Configure Note
     [self.note setTitle:[self.titleTextField text]];
     [self.note setKeywords:self.keyWordBtn.titleLabel.text];
-    [self.note setContent:[self.contentTextView text]];
     [self.note addAttachList:_attachList];
 
+    
+    // 把document下的temp目录重命名为noteId
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    NSString *documentsDirectory = [GeneralUtil getDocumentDirectory];
+    
+    // 如果是新建的笔记，则把temp目录重命名为noteId。
+    if (isNewNote) {
+        NSString *tempDirectory = [documentsDirectory stringByAppendingPathComponent:@"temp"];
+        NSString *targetDirectory = [documentsDirectory stringByAppendingPathComponent:[self.note noteId]];
+        NSString *htmlDirectory = [targetDirectory stringByAppendingPathComponent:@"index.html"];
+        
+        NSError *error;
+        BOOL success = [fileManager moveItemAtPath:tempDirectory toPath:targetDirectory error:&error];
+        if (!success)
+        {
+            NSLog(@"%@", [error localizedDescription]);
+        }
+        else
+        {
+            NSString *innerHTMLJS = @"document.documentElement.innerHTML";
+            NSString *innerHTML = [self.contentWebView stringByEvaluatingJavaScriptFromString:innerHTMLJS];
+            
+            NSError *writeError;
+            BOOL *writeSuccess = [innerHTML writeToFile:htmlDirectory atomically:YES encoding:NSUTF8StringEncoding error:&writeError];
+            if (!writeSuccess) {
+                NSLog(@"%@", [writeError localizedDescription]);
+            }
+        }
+    }
+    else // 如果是编辑的笔记，则把noteId目录下的html内容更新。
+    {
+        NSString *targetDirectory = [documentsDirectory stringByAppendingPathComponent:[self.note noteId]];
+        NSString *htmlDirectory = [targetDirectory stringByAppendingPathComponent:@"index.html"];
+        
+        NSString *innerHTMLJS = @"document.documentElement.innerHTML";
+        NSString *innerHTML = [self.contentWebView stringByEvaluatingJavaScriptFromString:innerHTMLJS];
+        
+        NSError *writeError;
+        BOOL *writeSuccess = [innerHTML writeToFile:htmlDirectory atomically:YES encoding:NSUTF8StringEncoding error:&writeError];
+        if (!writeSuccess) {
+            NSLog(@"%@", [writeError localizedDescription]);
+        }
+    }
+    
     [[NoteDataModelUtil sharedInstance] addNote:self.note];
-
     [self.notePreviewControllerDelegate setNoteInfo:self.note];
     
+    [GeneralUtil showToast:@"保存笔记成功"];
+
     // Dismiss View Controller
     [self dismissViewControllerAnimated:YES completion:nil];
 }
