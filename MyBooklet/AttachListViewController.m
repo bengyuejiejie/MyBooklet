@@ -189,7 +189,6 @@
         case 3:
             // 视频
             NSLog(@"录制视频");
-            // 拍照
             [self addMedia:2];
             break;
         case 4:

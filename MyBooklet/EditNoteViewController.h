@@ -13,7 +13,7 @@
 
 @class NotePreviewViewController;
 
-@interface EditNoteViewController : UIViewController <UITextFieldDelegate>
+@interface EditNoteViewController : UIViewController <UIActionSheetDelegate, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
 @property (strong, nonatomic) IBOutlet UITextField *titleTextField;
 @property (strong, nonatomic) IBOutlet UIButton *keyWordBtn;
@@ -30,5 +30,6 @@
 - (void)setAttachListData:(NSSet *)set;
 - (IBAction)addTag:(id)sender;
 - (void)setTag:(NSString *)str;
+- (IBAction)closeKeyBoard:(id)sender;
 
 @end

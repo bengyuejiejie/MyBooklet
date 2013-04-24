@@ -11,7 +11,7 @@
 #import "EditNoteViewController.h"
 @class AttachListViewController;
 
-@interface NotePreviewViewController : UIViewController <UIActionSheetDelegate>
+@interface NotePreviewViewController : UIViewController <UIActionSheetDelegate, UIWebViewDelegate>
 
 @property (strong, nonatomic) Note *note;
 

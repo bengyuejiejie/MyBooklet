@@ -11,6 +11,7 @@
 #import "NoteListViewController.h"
 #import "NoteDataModelUtil.h"
 #import "GeneralUtil.h"
+#import "Const.h"
 
 @interface NotePreviewViewController ()
 
@@ -60,7 +61,15 @@
     [self setNoteInfo:self.note];
     self.title = @"文章详情";
     
-    [self.contentWebView setUserInteractionEnabled:NO];
+    [self.contentWebView setDelegate:self];
+    // 使webview滚动时不出现上部下部的黑条
+    for (id view in self.contentWebView.subviews) {
+        if ([view isKindOfClass:[UIScrollView class]]) {
+            [view setBounces:NO];
+        }
+    }
+    
+    self.contentWebView.frame = CGRectMake(self.contentWebView.frame.origin.x, self.contentWebView.frame.origin.y, MainWidth, MainHeight - self.navigationController.navigationBar.frame.size.height - self.toolBar.frame.size.height - self.contentWebView.frame.origin.y);
     
     self.rightAttachListView = [[AttachListViewController alloc] init];
 }
@@ -95,9 +104,16 @@
     NSString *noteIdDirectory = [documentsDirectory stringByAppendingPathComponent:[self.note noteId]];
     NSString *htmlDocDirectory = [noteIdDirectory stringByAppendingPathComponent:@"index.html"];
     
-    NSString * htmlString = [NSString stringWithContentsOfFile:htmlDocDirectory encoding:(NSUTF8StringEncoding) error:nil];
+    NSURL * baseURL = [NSURL fileURLWithPath:htmlDocDirectory];
     
-    [self.contentWebView loadHTMLString:htmlString baseURL:nil];
+    NSString * htmlString = [NSString stringWithContentsOfFile:htmlDocDirectory encoding:(NSUTF8StringEncoding) error:nil];
+    [self.contentWebView loadHTMLString:htmlString baseURL:baseURL];
+}
+
+- (void)webViewDidFinishLoad:(UIWebView *)webView1
+{
+    NSString *str = @"document.body.setAttribute('contenteditable','false')";
+    [self.contentWebView stringByEvaluatingJavaScriptFromString:str];
 }
 
 /**

@@ -57,6 +57,7 @@
 		C1A52F0916F7255300CF6D29 /* RecordAudioViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1A52F0716F7255200CF6D29 /* RecordAudioViewController.xib */; };
 		C1A52F0B16F72B3600CF6D29 /* norecording.wav in Resources */ = {isa = PBXBuildFile; fileRef = C1A52F0A16F72B3600CF6D29 /* norecording.wav */; };
 		C1AAFDD9172770CA008BFAA5 /* TagListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1AAFDD8172770CA008BFAA5 /* TagListViewController.xib */; };
+		C1AAFDDB1727AC62008BFAA5 /* arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = C1AAFDDA1727AC62008BFAA5 /* arrow.png */; };
 		C1C8CBA217262FEE00CF1A32 /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = C1C8CBA117262FED00CF1A32 /* index.html */; };
 		C1C8CBA81726360500CF1A32 /* GeneralUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = C1C8CBA71726360500CF1A32 /* GeneralUtil.m */; };
 		C1C8CBAB17263BEE00CF1A32 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = C1C8CBAA17263BEE00CF1A32 /* MBProgressHUD.m */; };
@@ -143,6 +144,7 @@
 		C1A52F0716F7255200CF6D29 /* RecordAudioViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RecordAudioViewController.xib; sourceTree = "<group>"; };
 		C1A52F0A16F72B3600CF6D29 /* norecording.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = norecording.wav; sourceTree = "<group>"; };
 		C1AAFDD8172770CA008BFAA5 /* TagListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TagListViewController.xib; sourceTree = "<group>"; };
+		C1AAFDDA1727AC62008BFAA5 /* arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow.png; sourceTree = "<group>"; };
 		C1C8CBA117262FED00CF1A32 /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
 		C1C8CBA61726360500CF1A32 /* GeneralUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeneralUtil.h; sourceTree = "<group>"; };
 		C1C8CBA71726360500CF1A32 /* GeneralUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeneralUtil.m; sourceTree = "<group>"; };
@@ -388,6 +390,7 @@
 				C15BD70316F5CA620082FF6E /* HelpOnlineViewController.xib */,
 				C15BD70416F5CA620082FF6E /* MainViewController.xib */,
 				C15BD70516F5CA620082FF6E /* MoreViewController.xib */,
+				C1AAFDDA1727AC62008BFAA5 /* arrow.png */,
 			);
 			name = xib;
 			sourceTree = "<group>";
@@ -504,6 +507,7 @@
 				C16E369517103944001A3800 /* AVPlayerDemoPlaybackView.xib in Resources */,
 				C1C8CBA217262FEE00CF1A32 /* index.html in Resources */,
 				C1AAFDD9172770CA008BFAA5 /* TagListViewController.xib in Resources */,
+				C1AAFDDB1727AC62008BFAA5 /* arrow.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
