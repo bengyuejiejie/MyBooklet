@@ -98,7 +98,7 @@
                             UIImageView *imgView = [[UIImageView alloc] initWithImage:[UIImage imageWithCGImage:asset.defaultRepresentation.fullScreenImage]];
                             
                             // 等比例缩放图片，暂时先不care
-                            imgView.frame = CGRectMake(0, 0, MainWidth, MainHeight - self.navigationController.view.frame.size.height);
+                            imgView.frame = CGRectMake(0, 0, MainWidth, MainHeight - self.navigationController.navigationBar.frame.size.height);
                             [self.view addSubview:imgView];
                         }
                        failureBlock:^(NSError *error) {
@@ -137,8 +137,8 @@
 {
     UIWebView *webview = [[UIWebView alloc] init];
     webview.scalesPageToFit = YES;
-    webview.frame = CGRectMake(0, 0, MainWidth, MainHeight - self.navigationController.view.frame.size.height);
-    
+    webview.frame = CGRectMake(0, 0, MainWidth, MainHeight - self.navigationController.navigationBar.frame.size.height);
+
     NSURLRequest *request =[NSURLRequest requestWithURL:[NSURL URLWithString:noteAttach.url]];
     [webview loadRequest:request];
     
@@ -154,4 +154,5 @@
 {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
+
 @end
