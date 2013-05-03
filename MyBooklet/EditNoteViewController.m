@@ -20,13 +20,15 @@
 @implementation EditNoteViewController
 
 @synthesize titleTextField;
-@synthesize keyWordBtn;
+@synthesize keyWordTextField;
 @synthesize contentWebView;
 
 @synthesize toolBar;
 @synthesize coreDataDelegate;
 @synthesize notePreviewControllerDelegate;
 @synthesize attachList = _attachList;
+
+@synthesize titleTableView;
 
 - (void)viewDidLoad
 {
@@ -40,11 +42,6 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setAttachListData:) name:@"SAVE_NOTE_ATTACHLIST" object:nil];
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-}
-
 - (id)initWithNote:(Note *)note {
     self = [self initWithNibName:@"EditNoteViewController" bundle:[NSBundle mainBundle]];
     if (self) {
@@ -54,38 +51,24 @@
     return self;
 }
 
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+}
+
 #pragma mark
 #pragma mark setup View
 
 - (void)setupView
-{    
-    self.title = @"编辑文章";
-    
-    // Create Cancel Button
-    if (!self.note) {
-        UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"返回" style:UIBarButtonItemStyleBordered target:self action:@selector(back:)];
-        self.navigationItem.leftBarButtonItem = backButton;
-    }
-    
-    // Create Save Button
-    UIBarButtonItem *saveButton = [[UIBarButtonItem alloc] initWithTitle:@"保存" style:UIBarButtonItemStyleBordered target:self action:@selector(save:)];
-    self.navigationItem.rightBarButtonItem = saveButton;
-    
-    // Create Back Button
-    UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"返回" style:UIBarButtonItemStyleBordered target:self action:@selector(back:)];
-    self.navigationItem.leftBarButtonItem = backButton;
-    
-    // Create Toolbar
+{
+    [self initNavigationView];
+    [self initTopView];
+    [self initContentView];
     [self createToolBar];
     
-    titleTextField.delegate = self;
-
-    // 不是新建的笔记
+    // 修改笔记
     if (self.note)
     {
-        // Populate Form Fields
-        [self.titleTextField setText:[self.note title]];
-        [self.keyWordBtn setTitle:[self.note keywords] forState:UIControlStateNormal];
         [self setContent];
     }
     else
@@ -93,19 +76,114 @@
         // 新建的笔记需要在document下创建temp目录，并拷贝resource下的index.html到temp目录下
         [self createContentHtmlInDocument];
     }
+
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
+}
+
+- (void)initNavigationView
+{
+    self.title = @"编辑文章";
+    UIBarButtonItem *saveButton = [[UIBarButtonItem alloc] initWithTitle:@"保存" style:UIBarButtonItemStyleBordered target:self action:@selector(save:)];
+    self.navigationItem.rightBarButtonItem = saveButton;
+    UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"返回" style:UIBarButtonItemStyleBordered target:self action:@selector(back:)];
+    self.navigationItem.leftBarButtonItem = backButton;
+}
+
+- (void)initTopView
+{
+    self.titleTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0,320,80) style:UITableViewStylePlain];
+    self.titleTableView.delegate = self;
+    self.titleTableView.dataSource = self;
+    self.titleTableView.scrollEnabled = NO;
+    self.titleTableView.backgroundColor = [UIColor clearColor];
+    self.titleTableView.backgroundView = nil;
+    [self.view addSubview:self.titleTableView];
+}
+
+#pragma mark  UITableViewDelegate
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 2;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 40;
+}
+
+- (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *CellIdentifier = @"Cell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        cell.backgroundColor = [UIColor clearColor];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        
+        if (indexPath.row == 0)
+        {
+            self.titleTextField = [[UITextField alloc] initWithFrame:CGRectMake(10, 10, 250, 40)];
+            [self.titleTextField setPlaceholder:@"输入文章标题"];
+            self.titleTextField.font = [UIFont systemFontOfSize:15];
+            self.titleTextField.delegate = self;
+            self.titleTextField.text = @"";
+            [cell addSubview:self.titleTextField];
+
+            UIButton *btn = [UIButton buttonWithType: UIButtonTypeContactAdd];
+            btn.frame = CGRectMake(283, 3, 40, 35);
+            btn.imageView.exclusiveTouch    = YES;
+            [cell addSubview:btn];
+        }
+        else
+        {
+            self.keyWordTextField = [[UITextField alloc] initWithFrame:CGRectMake(10, 10, 250, 40)];
+            [self.keyWordTextField setUserInteractionEnabled:NO];
+            [self.keyWordTextField setPlaceholder:@"选择标签"];
+            self.keyWordTextField.font = [UIFont systemFontOfSize:15];
+            [cell addSubview:self.keyWordTextField];
+            
+            [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
+        }
+    }
     
+    if (self.note)
+    {
+        // Populate Form Fields
+        [self.titleTextField setText:[self.note title]];
+        [self.keyWordTextField setText:[self.note keywords]];
+    }
+    return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.row == 0)
+    {
+        return;
+    }
+    else
+    {
+        [self addTag:nil];
+    }
+}
+
+- (void)initContentView
+{
     // 使webview滚动时不出现上部下部的黑条
     for (id view in self.contentWebView.subviews) {
         if ([view isKindOfClass:[UIScrollView class]]) {
             [view setBounces:NO];
         }
     }
-//    [self.contentWebView setBackgroundColor:[UIColor clearColor]];
-//    self.contentWebView.opaque = NO;
     
-    self.contentWebView.frame = CGRectMake(self.contentWebView.frame.origin.x, self.contentWebView.frame.origin.y, MainWidth, MainHeight - self.navigationController.navigationBar.frame.size.height - self.toolBar.frame.size.height - self.contentWebView.frame.origin.y);
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
+    self.contentWebView.frame = CGRectMake(self.contentWebView.frame.origin.x, self.contentWebView.frame.origin.y, MainWidth, MainHeight - 44- 44 - self.contentWebView.frame.origin.y);
 }
 
 - (void)createToolBar
@@ -207,6 +285,10 @@
 
 - (void)save:(id)sender
 {
+    if (!self.titleTextField.text || [self.titleTextField.text isEqualToString:@""]) {
+        [GeneralUtil showToast:@"标题必须填写哦"];
+        return;
+    }
     BOOL isNewNote = !self.note;
     if (!self.note) {
         // Create Note
@@ -224,7 +306,7 @@
 
     // Configure Note
     [self.note setTitle:[self.titleTextField text]];
-    [self.note setKeywords:self.keyWordBtn.titleLabel.text];
+    [self.note setKeywords:self.keyWordTextField.text];
     [self.note addAttachList:_attachList];
 
     [self saveContentHtmlToDirectory:isNewNote];
@@ -384,7 +466,7 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
     [data writeToFile:pngImage atomically:YES];
     
 
-    NSString *js = [NSString stringWithFormat:@"var br = document.createElement('p'); document.body.appendChild(br); var img = document.createElement('img'); img.width = 300; img.height = 360; img.src = '%@' ;document.body.appendChild(img); ", imageName];
+    NSString *js = [NSString stringWithFormat:@"var br = document.createElement('p'); document.body.appendChild(br); var img = document.createElement('img'); img.src = '%@' ;document.body.appendChild(img); ", imageName];
     
     [self.contentWebView stringByEvaluatingJavaScriptFromString:js];
 }
@@ -434,7 +516,7 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
 
 - (void)setTag:(NSString *)str
 {
-    [self.keyWordBtn setTitle:str forState:UIControlStateNormal];
+    [self.keyWordTextField setText:str];
 }
 
 #pragma mark

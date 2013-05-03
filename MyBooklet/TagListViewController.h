@@ -13,6 +13,7 @@
 
 @interface TagListViewController : UIViewController<UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate>
 
+@property (strong, nonatomic) IBOutlet UIView *topView;
 @property (retain, nonatomic) IBOutlet UITableView *tableView;
 @property (retain, nonatomic) IBOutlet UITextField *inputTextField;
 @property (retain, nonatomic) NSMutableArray *dataSource;

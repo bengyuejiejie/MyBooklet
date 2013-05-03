@@ -19,6 +19,7 @@
 @property (strong, nonatomic) IBOutlet UIToolbar *toolBar;
 @property (strong, nonatomic) IBOutlet UIWebView *contentWebView;
 
+@property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (strong, nonatomic) BookletAppDelegate *delegate;
 @property (strong, nonatomic) AttachListViewController *rightAttachListView;
 

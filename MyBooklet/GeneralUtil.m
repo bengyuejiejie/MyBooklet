@@ -45,25 +45,6 @@
     
 }
 
-+ (void)showToast:(NSString *)infoStr delegate:(id)sender completionSel:(SEL)completion
-{
-    MBProgressHUD *HUD = [[MBProgressHUD alloc] init];
-    
-    UIWindow *window = [UIApplication sharedApplication].keyWindow;   // 获得根窗口的UIWindow对象实例
-    [window addSubview:HUD];
-    
-    HUD.labelText = infoStr;
-    HUD.mode = MBProgressHUDModeText;
-    HUD.yOffset = -50.0f;
-    
-    [HUD showAnimated:YES whileExecutingBlock:^{
-        sleep(1);
-    } completionBlock:^{
-        [sender performSelector:completion];
-        [HUD removeFromSuperview];
-    }];
-}
-
 + (UIImage *)thumbnailWithImage:(UIImage *)image size:(CGSize)asize
 {
     UIImage *newimage;

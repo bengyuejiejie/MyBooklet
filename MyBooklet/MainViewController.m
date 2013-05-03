@@ -195,11 +195,20 @@
     for (Note *note in self.notes)
     {
         NSString *titleString = note.title;
+        NSString *keyWordString = note.keywords;
             
         NSRange range = [[titleString lowercaseString] rangeOfString:[searchText lowercaseString]];
         if (range.location != NSNotFound)
         {
             [self.filterarray addObject:note];
+        }
+        else
+        {
+            range = [[keyWordString lowercaseString] rangeOfString:[searchText lowercaseString]];
+            if (range.location != NSNotFound)
+            {
+                [self.filterarray addObject:note];
+            }
         }
         
         titleString = nil;

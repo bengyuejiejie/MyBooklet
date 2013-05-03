@@ -12,6 +12,7 @@
 #import "NoteDataModelUtil.h"
 #import "GeneralUtil.h"
 #import "Const.h"
+#import <QuartzCore/QuartzCore.h> 
 
 @interface NotePreviewViewController ()
 
@@ -47,6 +48,8 @@
 
 - (void)setupView
 {
+    self.title = @"文章详情";
+
     // Create Back Button
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"返回" style:UIBarButtonItemStyleBordered target:self action:@selector(back:)];
         self.navigationItem.leftBarButtonItem = backButton;
@@ -58,9 +61,6 @@
     // Create Toolbar
     [self createToolBar];
     
-    [self setNoteInfo:self.note];
-    self.title = @"文章详情";
-    
     [self.contentWebView setDelegate:self];
     // 使webview滚动时不出现上部下部的黑条
     for (id view in self.contentWebView.subviews) {
@@ -69,9 +69,17 @@
         }
     }
     
+    self.scrollView.showsVerticalScrollIndicator = NO;
+    self.scrollView.contentSize = CGSizeMake(0, 600);
+    self.scrollView.frame = CGRectMake(self.scrollView.frame.origin.x, self.scrollView.frame.origin.y, 320, MainHeight - self.navigationController.navigationBar.frame.size.height - self.toolBar.frame.size.height);
+    self.scrollView.showsVerticalScrollIndicator = YES;
+    ((UIScrollView *)[self.contentWebView.subviews objectAtIndex:0]).scrollEnabled = NO;
+    
     self.contentWebView.frame = CGRectMake(self.contentWebView.frame.origin.x, self.contentWebView.frame.origin.y, MainWidth, MainHeight - self.navigationController.navigationBar.frame.size.height - self.toolBar.frame.size.height - self.contentWebView.frame.origin.y);
     
     self.rightAttachListView = [[AttachListViewController alloc] init];
+    
+    [self setNoteInfo:self.note];
 }
 
 - (void)back:(id)sender {
@@ -86,8 +94,10 @@
         [self.titleLabel setText:[self.note title]]; 
         NSArray *arr = [self.note.keywords componentsSeparatedByString:@";"];
 
+        UIButton *lastBtn = nil;
+
         for (int i = 0; i < arr.count; i ++) {
-            [self generateKeyWordBtn:arr[i] index:i];
+            lastBtn = [self generateKeyWordBtn:arr[i] index:i lastBtn:lastBtn];
         }
         [self setContent];
     }
@@ -121,15 +131,38 @@
  *
  *	@param 	str 	
  */
-- (void)generateKeyWordBtn:(NSString *)str index:(int)i
+- (UIButton *)generateKeyWordBtn:(NSString *)str index:(int)i lastBtn:(UIButton *)lastBtn
 {
-    UIButton *btn = [[UIButton alloc] initWithFrame:CGRectMake(20 + i*55, 55, 45, 20)];
-    [btn setBackgroundColor:[UIColor lightGrayColor]];
+    UIButton *btn =  [UIButton buttonWithType:UIButtonTypeCustom];
+    
+    if (lastBtn) {
+        btn.frame = CGRectMake(10 + lastBtn.frame.origin.x + lastBtn.frame.size.width , 55, [self calculateTextWidth:str]+ 5, 20);
+    }
+    else
+    {
+        btn.frame = CGRectMake(10, 55, [self calculateTextWidth:str] + 5, 20);
+    }
+    [btn.layer setMasksToBounds:YES];
+    [btn.layer setCornerRadius:3.0]; //设置矩形四个圆角半径
+    [btn.layer setBorderWidth:0.5]; //边框宽度
+
+    [btn setBackgroundColor:[UIColor darkGrayColor]];
     btn.titleLabel.font = [UIFont systemFontOfSize: 12];
     [btn setTitle:str forState:UIControlStateNormal];
+    
     [btn addTarget:self action:@selector(clickKeyWordBtn:) forControlEvents:UIControlEventTouchUpInside];
 
-    [self.view addSubview:btn];
+    [self.scrollView addSubview:btn];
+    
+    return btn;
+}
+
+//计算 宽度
+-(CGFloat)calculateTextWidth:(NSString *)strContent{
+    //    CGSize constraint = CGSizeMake(heightInput, heightInput);
+    CGFloat constrainedSize = 26500.0f; //其他大小也行
+    CGSize size = [strContent sizeWithFont:[UIFont systemFontOfSize:12] constrainedToSize:CGSizeMake(constrainedSize, CGFLOAT_MAX) lineBreakMode:UILineBreakModeWordWrap];
+    return size.width;
 }
 
 /**
@@ -271,5 +304,9 @@
                          UIControl *overView = (UIControl *)[[[UIApplication sharedApplication] keyWindow] viewWithTag:10086];
                          [overView removeFromSuperview];
                      }];
+}
+- (void)viewDidUnload {
+    [self setScrollView:nil];
+    [super viewDidUnload];
 }
 @end

@@ -57,6 +57,8 @@
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"返回" style:UIBarButtonItemStyleBordered target:self action:@selector(cancel:)];
     self.navigationItem.leftBarButtonItem = backButton;
 
+    self.tableView.tableHeaderView = self.topView;
+    
     self.coreDataDelegate = (BookletAppDelegate *)[[UIApplication sharedApplication] delegate];
     [self initData];
 }

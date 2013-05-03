@@ -20,9 +20,6 @@
 // 界面下方显示通用提示信息
 + (void)showToast:(NSString *)infoStr;
 
-// 界面下方显示通用提示信息，加回调函数
-+ (void)showToast:(NSString *)infoStr delegate:(id)sender completionSel:(SEL)completion;
-
 // 生成缩略图 自动缩放到指定大小
 + (UIImage *)thumbnailWithImage:(UIImage *)image size:(CGSize)asize;
 

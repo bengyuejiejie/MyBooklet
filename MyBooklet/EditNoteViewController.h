@@ -13,12 +13,14 @@
 
 @class NotePreviewViewController;
 
-@interface EditNoteViewController : UIViewController <UIActionSheetDelegate, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+@interface EditNoteViewController : UIViewController <UIActionSheetDelegate, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITableViewDataSource, UITableViewDelegate>
 
+@property (strong, nonatomic) IBOutlet UIView *titleView;
 @property (strong, nonatomic) IBOutlet UITextField *titleTextField;
-@property (strong, nonatomic) IBOutlet UIButton *keyWordBtn;
+@property (strong, nonatomic) IBOutlet UITextField *keyWordTextField;
 @property (strong, nonatomic) IBOutlet UIWebView *contentWebView;
 @property (strong, nonatomic) IBOutlet UIToolbar *toolBar;
+@property (strong, nonatomic) UITableView *titleTableView;
 
 @property (strong, nonatomic) Note *note;
 @property (strong, nonatomic) NSSet *attachList;
